@@ -1,0 +1,70 @@
+{
+  "all_claims_passed": true,
+  "arxiv": "2606.25357",
+  "claims": {
+    "claim_1_bundles": {
+      "fixed_points": 2,
+      "mechanism": "exhaustive unary and binary finite bundles plus pullback-of-lifting closure",
+      "negative_control": {
+        "omitted_safety_makes_c_postfixed": true
+      },
+      "passed": true,
+      "post_fixed_points": 3,
+      "predicate_count": 8,
+      "scope": "finite exact instance of the stated definitions; general category-theoretic scope remains source-proven.",
+      "source": "Definition 3.1, Definition 3.8, Definition 3.9"
+    },
+    "claim_2_closure_postfixed": {
+      "bundles_exhausted": 4,
+      "mechanism": "all abstract Boolean bundles under a surjective Moore homomorphism",
+      "negative_control": {
+        "non_surjective_reflection_fails": true
+      },
+      "passed": true,
+      "scope": "finite exhaustive transfer identity matching the theorem hypotheses.",
+      "source": "Theorem 3.12 Safe verification"
+    },
+    "claim_3_safe_transfer": {
+      "mechanism": "fiber-join pushforward for every concrete post-fixed Boolean bundle",
+      "negative_control": {
+        "non_homomorphic_target_breaks_preservation": true
+      },
+      "passed": true,
+      "post_fixed_source_bundles": 9,
+      "scope": "finite exhaustive instance of the pushforward-preservation construction.",
+      "source": "Theorem 3.13 Safe construction"
+    },
+    "claim_4_logic_quantitative": {
+      "mechanism": "exhaustive nonnegative sum/max/uniform-barycenter zero laws",
+      "negative_control": {
+        "subtraction_breaks_zero_homomorphism": true
+      },
+      "passed": true,
+      "scope": "finite exact algebra-homomorphism conditions used by the theorem.",
+      "source": "Theorem 3.14 logical-quantitative relation",
+      "tuples": 256
+    },
+    "claim_5_rl_abstraction": {
+      "actions": 2,
+      "mechanism": "finite stochastic Moore homomorphism, next-observation prediction, kernel/bisimulation quotient, and policy closure",
+      "negative_control": {
+        "observation_mismatch_breaks_homomorphism": true
+      },
+      "passed": true,
+      "scope": "exact finite RL instantiation of the source propositions.",
+      "source": "Propositions 4.1--4.3 and Example 2.9",
+      "states": 4
+    },
+    "claim_6_policy_naturality": {
+      "mechanism": "distribution pushforward commutes with policy-selected Moore transitions",
+      "negative_control": {
+        "incompatible_abstract_policy_breaks_naturality": true
+      },
+      "passed": true,
+      "scope": "finite exact naturality square for the paper's closed-loop construction.",
+      "source": "Example 2.9 policy-dependent transition"
+    }
+  },
+  "limitations": "Finite executions check the exact source constructions and failure hypotheses. The paper's universal categorical theorems remain justified by the linked public proofs, not by finite enumeration.",
+  "paper": "kovefbSXbQ"
+}
