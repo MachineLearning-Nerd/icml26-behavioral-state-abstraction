@@ -5,7 +5,7 @@
   "space_id": null,
   "paper": null,
   "tags": [],
-  "updated_at": "2026-07-29T12:06:51+00:00",
+  "updated_at": "2026-07-29T12:08:18+00:00",
   "root": {
     "slug": "index",
     "title": "kovefbSXbQ — Behavioral State Abstraction",
@@ -34,9 +34,63 @@
         "title": "Verification",
         "file": "pages/verification/page.md",
         "children": []
+      },
+      {
+        "slug": "claim-1",
+        "title": "Claim 1",
+        "file": "pages/claim-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2",
+        "title": "Claim 2",
+        "file": "pages/claim-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3",
+        "title": "Claim 3",
+        "file": "pages/claim-3/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4",
+        "title": "Claim 4",
+        "file": "pages/claim-4/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5",
+        "title": "Claim 5",
+        "file": "pages/claim-5/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6",
+        "title": "Claim 6",
+        "file": "pages/claim-6/page.md",
+        "children": []
+      },
+      {
+        "slug": "methods",
+        "title": "Methods",
+        "file": "pages/methods/page.md",
+        "children": []
+      },
+      {
+        "slug": "negative-controls",
+        "title": "Negative controls",
+        "file": "pages/negative-controls/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
       }
     ]
   },
-  "agent_view_tokens": 678,
-  "revision": "1785326811043495141"
+  "agent_view_tokens": 1731,
+  "revision": "1785326898658571252"
 }
