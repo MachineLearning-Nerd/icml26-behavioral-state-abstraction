@@ -1,0 +1,6 @@
+{
+  "missing_surjectivity": "rejected because pullback was not order-reflecting",
+  "reversed_compatibility": "rejected because the required directed inequality was absent",
+  "all_controls_failed_as_intended": true
+}
+

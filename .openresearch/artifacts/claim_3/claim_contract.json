@@ -1,0 +1,23 @@
+{
+  "claim_id": 3,
+  "source": {
+    "paper": "arXiv:2606.25357v1",
+    "anchors": ["Theorem 3.12", "Theorem 3.13"],
+    "html_fragments": ["S3.Thmtheorem12", "S3.Thmtheorem13"],
+    "source_sha256": "aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a"
+  },
+  "domain": "Arbitrary state sets, arity, value preorder, bundles, and compatible liftings satisfying the paper's stated closure inequalities.",
+  "quantifiers": [
+    "For every abstract bundle h_Z, concrete post-fixedness of pull(h_Z) implies abstract post-fixedness when the homomorphism is surjective.",
+    "For every concrete bundle h_S, concrete post-fixedness implies post-fixedness of push(h_S) for any homomorphism."
+  ],
+  "assumptions": [
+    "The encoder is a coalgebra homomorphism.",
+    "The source and target liftings use the same operators and satisfy Lemma 3.11 closure compatibility.",
+    "Pullback is order-reflecting for Theorem 3.12, obtained from encoder surjectivity.",
+    "Pushforward is monotone for Theorem 3.13 and the required fiber joins exist."
+  ],
+  "acceptance": "A proof kernel and a structurally independent closure checker both derive the two universal goals without assuming either goal; controls without surjectivity and with reversed compatibility are rejected.",
+  "non_circularity": "The goals are forbidden from the assumption set. No finite state count, sample size, tolerance, or formula-derived budget is used."
+}
+
