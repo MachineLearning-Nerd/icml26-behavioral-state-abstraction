@@ -11,7 +11,7 @@ revision `5a8a6266162a652c6216487c4df8116b15c63aca`.
 | 2 | Symbolic closure composition and post-fixed/fixed schema | VERIFIED |
 | 3 | Abstract preorder proof certificate | VERIFIED |
 | 4 | Constructor-complete structural induction | VERIFIED |
-| 5 | Historical 4-state MDP only | TOY — not release-ready |
+| 5 | Five symbolic proposition proof paths | VERIFIED |
 | 6 | Symbolic naturality normalization for arbitrary maps | VERIFIED |
 
 ## Claim 3 — safe verification and construction
@@ -73,3 +73,13 @@ constructors. Each induction step requires exactly the matching
 zero-homomorphism premise. A separate normalizer agrees on 676 syntax trees;
 removing any one of the three laws makes the proof fail. The historical
 values-0-to-3 enumeration is not used as universal evidence.
+
+## Claim 5 — RL propositions
+
+Proposition 4.1 is checked by transition/observation homomorphism and
+probability-functor rewrites. Proposition 4.2 is checked in both directions
+using the kernel-factorization criterion, with the standard nonempty-MDP
+extension to unused representation states stated explicitly. Proposition 4.3
+is checked in both directions through the surjective equivalence quotient.
+Controls without observation preservation, target extension, or equivalence
+are rejected. The old four-state MDP remains historical corroboration.
