@@ -15,6 +15,8 @@ import platform
 import time
 from pathlib import Path
 
+from proof_certificates import run as run_proof_certificates
+
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "outputs"
 
@@ -194,7 +196,9 @@ def main():
     claims = {"claim_1_bundles": c1_bundles_and_closure(), "claim_2_closure_postfixed": c2_safe_pullback_verification(),
               "claim_3_safe_transfer": c3_safe_pushforward_construction(), "claim_4_logic_quantitative": c4_zero_predicate(),
               "claim_5_rl_abstraction": c5_rl_abstractions_and_bisimulation(), "claim_6_policy_naturality": c6_policy_dependent_naturality()}
+    proof_certificates = run_proof_certificates()
     result = {"paper": "kovefbSXbQ", "arxiv": "2606.25357", "all_claims_passed": all(v["passed"] for v in claims.values()), "claims": claims,
+              "current_verification": {"claim_3": proof_certificates},
               "limitations": "Finite executions check the exact source constructions and failure hypotheses. The paper's universal categorical theorems remain justified by the linked public proofs, not by finite enumeration.",
               "execution": {
                   "backend": "local",
