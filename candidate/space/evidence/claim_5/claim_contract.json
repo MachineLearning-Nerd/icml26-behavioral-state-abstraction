@@ -1,0 +1,17 @@
+{
+  "claim_id": 5,
+  "source_anchors": ["Proposition 4.1", "Proposition 4.2", "Proposition 4.3"],
+  "source_sha256": "aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a",
+  "contracts": [
+    "Every F_Moore homomorphism preserves next-observation distributions for every state and action.",
+    "Model-irrelevance is equivalent to the F_Moore coalgebra-homomorphism factorization.",
+    "For every equivalence r on an F-coalgebra, q_r is a homomorphism iff r is post-fixed under the kernel closure."
+  ],
+  "assumptions": [
+    "Standard probability-pushforward functoriality.",
+    "Kernel inclusion iff factorization through the encoder image; standard nonempty MDP structure permits extension to unused representation states.",
+    "r is an equivalence and q_r is its surjective quotient map."
+  ],
+  "acceptance": "All five implication/equivalence proof paths check, independent factorization and quotient checkers agree, and three necessary-assumption controls fail."
+}
+

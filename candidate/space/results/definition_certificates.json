@@ -1,0 +1,126 @@
+{
+  "claim_1": {
+    "schemas": {
+      "bundle": [
+        "function",
+        [
+          "power",
+          "X",
+          "n"
+        ],
+        "V"
+      ],
+      "coalgebra": [
+        "function",
+        "X",
+        [
+          "apply",
+          "F",
+          "X"
+        ]
+      ]
+    },
+    "status": "VERIFIED"
+  },
+  "claim_2": {
+    "schemas": {
+      "behavioral_structure": [
+        [
+          "preorder",
+          "h_X",
+          [
+            "apply",
+            "T_X",
+            "h_X"
+          ]
+        ],
+        [
+          "equality",
+          "h_X",
+          [
+            "apply",
+            "T_X",
+            "h_X"
+          ]
+        ]
+      ],
+      "closure": [
+        "compose",
+        [
+          "pullback",
+          "t_X"
+        ],
+        "lambda_X"
+      ],
+      "pointwise": "lambda_X(h_X)(t_X(x_1),...,t_X(x_n))"
+    },
+    "status": "VERIFIED"
+  },
+  "claim_6": {
+    "left_normal_form": [
+      "pair",
+      [
+        "map_distribution",
+        "f",
+        [
+          "select",
+          "p",
+          [
+            "policy",
+            "pi",
+            "o"
+          ]
+        ]
+      ],
+      "o"
+    ],
+    "negative_control": {
+      "reason": "different concrete and abstract policies do not form the claimed natural transformation",
+      "rejected": true
+    },
+    "quantifier": "for every set map f : X -> Y",
+    "right_normal_form": [
+      "pair",
+      [
+        "map_distribution",
+        "f",
+        [
+          "select",
+          "p",
+          [
+            "policy",
+            "pi",
+            "o"
+          ]
+        ]
+      ],
+      "o"
+    ],
+    "status": "VERIFIED"
+  },
+  "independent_checker": {
+    "claim_6": {
+      "all_commuted": true,
+      "cases": 128
+    }
+  },
+  "negative_controls": {
+    "fixed_only": {
+      "reason": "Definition 3.9 permits post-fixed points, not only fixed points",
+      "rejected": true
+    },
+    "incompatible_policy": {
+      "reason": "different concrete and abstract policies do not form the claimed natural transformation",
+      "rejected": true
+    },
+    "reversed_closure_composition": {
+      "reason": "lambda_X after system pullback is ill-typed and reverses Definition 3.8",
+      "rejected": true
+    },
+    "wrong_bundle_arity": {
+      "reason": "X^(n+1) is not the Definition 3.1 domain X^n",
+      "rejected": true
+    }
+  },
+  "non_circularity": "The primary evidence is symbolic normalization over arbitrary names; the 128 finite cases are an independent checker only."
+}

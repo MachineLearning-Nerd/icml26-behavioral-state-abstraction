@@ -1,0 +1,2 @@
+{"claim": 1, "status": "VERIFIED", "bundle_schema": "X^n -> V", "coalgebra_schema": "X -> F X", "wrong_arity_rejected": true}
+

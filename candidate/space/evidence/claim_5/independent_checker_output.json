@@ -1,0 +1,2 @@
+{"kernel_factorization": {"cases": 64, "all_passed": true}, "quotient_bisimulation": {"equivalences": 15, "transitions_each": 256, "cases": 3840, "all_passed": true}}
+

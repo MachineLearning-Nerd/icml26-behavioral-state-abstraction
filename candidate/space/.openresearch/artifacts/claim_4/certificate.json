@@ -1,0 +1,25 @@
+{
+  "theorem": "Theorem 3.14",
+  "algebra_homomorphism_laws": [
+    "z_combinator_homomorphism",
+    "z_aggregator_homomorphism",
+    "z_barycenter_homomorphism"
+  ],
+  "induction_cases": [
+    {"constructor": "leaf", "requires": []},
+    {
+      "constructor": "combinator",
+      "requires": ["children_commute", "z_combinator_homomorphism"]
+    },
+    {
+      "constructor": "aggregator",
+      "requires": ["child_commutes", "z_aggregator_homomorphism"]
+    },
+    {
+      "constructor": "barycenter",
+      "requires": ["child_commutes", "z_barycenter_homomorphism"]
+    }
+  ],
+  "conclusion": "forall h. z o lambda_quant(h) = lambda_truth(z o h)"
+}
+

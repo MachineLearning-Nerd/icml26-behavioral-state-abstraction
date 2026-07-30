@@ -1,0 +1,9 @@
+{
+  "claim_id": 2,
+  "source_anchors": ["Definition 3.8", "Definition 3.9"],
+  "source_sha256": "aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a",
+  "quantifiers": "For arbitrary F-coalgebra, lifting, bundle, and tuple in X^n.",
+  "contract": ["T_X = t_X* o lambda_X", "T_X(h)(x_1:n) = lambda_X(h)(t_X(x_1),...,t_X(x_n))", "behavioral means post-fixed or fixed"],
+  "acceptance": "All schemas match; reversed composition and fixed-only controls are rejected."
+}
+

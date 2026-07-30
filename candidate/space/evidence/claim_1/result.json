@@ -1,0 +1,8 @@
+{
+  "claim": 1,
+  "schemas": {
+    "bundle": ["function", ["power", "X", "n"], "V"],
+    "coalgebra": ["function", "X", ["apply", "F", "X"]]
+  },
+  "status": "VERIFIED"
+}

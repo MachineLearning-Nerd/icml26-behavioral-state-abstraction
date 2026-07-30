@@ -1,0 +1,31 @@
+{
+  "claim": 3,
+  "status": "VERIFIED",
+  "proofs": {
+    "theorem_3_12_safe_verification": {
+      "steps_checked": 4
+    },
+    "theorem_3_13_safe_construction": {
+      "steps_checked": 4
+    }
+  },
+  "independent_checker": {
+    "theorem_3_12_safe_verification": {
+      "goal_derived": true
+    },
+    "theorem_3_13_safe_construction": {
+      "goal_derived": true
+    }
+  },
+  "negative_controls": {
+    "missing_surjectivity": {
+      "rejected": true,
+      "reason": "operator is not order-reflecting"
+    },
+    "reversed_compatibility": {
+      "rejected": true,
+      "reason": "unlisted assumption"
+    }
+  }
+}
+

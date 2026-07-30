@@ -1,0 +1,3 @@
+Command: marimo check --strict notebooks/behavioral_semantics_reproduction.py
+Exit code: 0
+marimo version: 0.23.15

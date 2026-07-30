@@ -1,0 +1,75 @@
+{
+  "properties": {
+    "monotone": ["push"],
+    "order_reflecting": ["pull"]
+  },
+  "proofs": [
+    {
+      "id": "theorem_3_12_safe_verification",
+      "assumptions": [
+        [["pull", "h_Z"], ["T_S", ["pull", "h_Z"]]],
+        [["T_S", ["pull", "h_Z"]], ["pull", ["T_Z", "h_Z"]]]
+      ],
+      "goal": ["h_Z", ["T_Z", "h_Z"]],
+      "steps": [
+        {
+          "id": "concrete_postfixed",
+          "rule": "assumption",
+          "conclusion": [["pull", "h_Z"], ["T_S", ["pull", "h_Z"]]]
+        },
+        {
+          "id": "closure_oplaxity",
+          "rule": "assumption",
+          "conclusion": [["T_S", ["pull", "h_Z"]], ["pull", ["T_Z", "h_Z"]]]
+        },
+        {
+          "id": "pulled_abstract_postfixed",
+          "rule": "transitivity",
+          "premises": ["concrete_postfixed", "closure_oplaxity"],
+          "conclusion": [["pull", "h_Z"], ["pull", ["T_Z", "h_Z"]]]
+        },
+        {
+          "id": "abstract_postfixed",
+          "rule": "order_reflection",
+          "operator": "pull",
+          "premises": ["pulled_abstract_postfixed"],
+          "conclusion": ["h_Z", ["T_Z", "h_Z"]]
+        }
+      ]
+    },
+    {
+      "id": "theorem_3_13_safe_construction",
+      "assumptions": [
+        ["h_S", ["T_S", "h_S"]],
+        [["push", ["T_S", "h_S"]], ["T_Z", ["push", "h_S"]]]
+      ],
+      "goal": [["push", "h_S"], ["T_Z", ["push", "h_S"]]],
+      "steps": [
+        {
+          "id": "concrete_postfixed",
+          "rule": "assumption",
+          "conclusion": ["h_S", ["T_S", "h_S"]]
+        },
+        {
+          "id": "push_monotone",
+          "rule": "monotonicity",
+          "operator": "push",
+          "premises": ["concrete_postfixed"],
+          "conclusion": [["push", "h_S"], ["push", ["T_S", "h_S"]]]
+        },
+        {
+          "id": "closure_laxity",
+          "rule": "assumption",
+          "conclusion": [["push", ["T_S", "h_S"]], ["T_Z", ["push", "h_S"]]]
+        },
+        {
+          "id": "abstract_postfixed",
+          "rule": "transitivity",
+          "premises": ["push_monotone", "closure_laxity"],
+          "conclusion": [["push", "h_S"], ["T_Z", ["push", "h_S"]]]
+        }
+      ]
+    }
+  ]
+}
+

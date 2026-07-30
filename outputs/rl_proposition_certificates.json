@@ -1,0 +1,58 @@
+{
+  "claim": 5,
+  "independent_checkers": {
+    "kernel_factorization": {
+      "equivalence_holds": true,
+      "maps_checked": 64
+    },
+    "quotient_bisimulation": {
+      "biconditional_holds": true,
+      "cases": 3840,
+      "equivalences": 15,
+      "transition_systems_per_equivalence": 256
+    }
+  },
+  "limitation": "Proposition 4.2 uses the standard nonempty-MDP extension from the encoder image to unused representation states.",
+  "negative_controls": {
+    "missing_observation_preservation": {
+      "reason": "missing property observation_homomorphism",
+      "rejected": true
+    },
+    "missing_target_extension": {
+      "reason": "missing property target_extension",
+      "rejected": true
+    },
+    "non_equivalence_quotient": {
+      "reason": "missing property r_equivalence",
+      "rejected": true
+    }
+  },
+  "non_circularity": "The primary proofs rewrite arbitrary morphism/kernel symbols. Finite enumeration checks the proof implementation only.",
+  "proofs": {
+    "proposition_4_1": {
+      "goal": [
+        "t_X",
+        "P_oX"
+      ],
+      "steps_checked": 3
+    },
+    "proposition_4_2_backward": {
+      "goal": "model_irrelevance",
+      "steps_checked": 3
+    },
+    "proposition_4_2_forward": {
+      "goal": "f_is_F_Moore_homomorphism",
+      "steps_checked": 3
+    },
+    "proposition_4_3_backward": {
+      "goal": "r_postfixed",
+      "steps_checked": 3
+    },
+    "proposition_4_3_forward": {
+      "goal": "q_r_is_homomorphism",
+      "steps_checked": 3
+    }
+  },
+  "scope": "Universal symbolic proofs of Propositions 4.1\u20134.3 under their Set/MDP assumptions.",
+  "status": "VERIFIED"
+}

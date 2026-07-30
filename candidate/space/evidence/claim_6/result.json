@@ -1,0 +1,7 @@
+{
+  "claim": 6,
+  "left_normal_form": ["pair", ["map_distribution", "f", ["select", "p", ["policy", "pi", "o"]]], "o"],
+  "quantifier": "for every set map f : X -> Y",
+  "right_normal_form": ["pair", ["map_distribution", "f", ["select", "p", ["policy", "pi", "o"]]], "o"],
+  "status": "VERIFIED"
+}

@@ -1,0 +1,9 @@
+{
+  "claim_id": 1,
+  "source_anchor": "Definition 3.1 and Section 2 System definition",
+  "source_sha256": "aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a",
+  "quantifiers": "Given arbitrary n in N, sets X and V, and functor F.",
+  "contract": ["bundle h_X has total function type X^n -> V", "system t_X has coalgebra type X -> F X"],
+  "acceptance": "Symbolic type schemas match the source and a wrong-arity control is rejected."
+}
+

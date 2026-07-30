@@ -1,0 +1,7 @@
+{
+  "claim": 2,
+  "behavioral_alternatives": 2,
+  "closure": ["compose", ["pullback", "t_X"], "lambda_X"],
+  "pointwise": "lambda_X(h_X)(t_X(x_1),...,t_X(x_n))",
+  "status": "VERIFIED"
+}

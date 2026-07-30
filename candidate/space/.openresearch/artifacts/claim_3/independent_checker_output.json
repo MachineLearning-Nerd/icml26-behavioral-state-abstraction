@@ -1,0 +1,6 @@
+{
+  "checker": "rule-closure fixed point, independent of certificate step order",
+  "theorem_3_12_safe_verification": "goal derived",
+  "theorem_3_13_safe_construction": "goal derived"
+}
+

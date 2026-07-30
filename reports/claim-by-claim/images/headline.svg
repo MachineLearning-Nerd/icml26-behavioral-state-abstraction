@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420">
+  <rect width="1000" height="420" fill="#0b1020"/>
+  <text x="55" y="58" fill="#eef2ff" font-family="sans-serif" font-size="30" font-weight="700">Evidence status, not judge score</text>
+  <text x="55" y="95" fill="#9ca3af" font-family="sans-serif" font-size="18">Universal claims moved from finite examples to machine-checked proof certificates</text>
+  <rect x="55" y="140" width="380" height="190" rx="18" fill="#30284f"/>
+  <text x="245" y="190" text-anchor="middle" fill="#c4b5fd" font-family="sans-serif" font-size="18">JUDGED BASELINE</text>
+  <text x="245" y="260" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="72" font-weight="700">6 / 12</text>
+  <text x="245" y="302" text-anchor="middle" fill="#ddd6fe" font-family="sans-serif" font-size="19">six TOY verdicts</text>
+  <path d="M455 235 L535 235" stroke="#93c5fd" stroke-width="8"/>
+  <path d="M520 218 L540 235 L520 252" fill="none" stroke="#93c5fd" stroke-width="8"/>
+  <rect x="565" y="140" width="380" height="190" rx="18" fill="#123d38"/>
+  <text x="755" y="190" text-anchor="middle" fill="#6ee7b7" font-family="sans-serif" font-size="18">CURRENT INTERNAL EVIDENCE</text>
+  <text x="755" y="253" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="54" font-weight="700">6 VERIFIED</text>
+  <text x="755" y="302" text-anchor="middle" fill="#a7f3d0" font-family="sans-serif" font-size="19">awaiting live judge</text>
+  <text x="500" y="382" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="17">No score increase is claimed before evaluator review.</text>
+</svg>

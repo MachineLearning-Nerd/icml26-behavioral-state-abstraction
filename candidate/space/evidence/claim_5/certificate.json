@@ -1,0 +1,68 @@
+{
+  "properties": [
+    "transition_homomorphism",
+    "probability_functoriality",
+    "observation_homomorphism",
+    "target_extension",
+    "r_equivalence",
+    "quotient_surjective"
+  ],
+  "proofs": [
+    {
+      "id": "proposition_4_1",
+      "kind": "path",
+      "start": ["f", "t_Y", "P_oY"],
+      "goal": ["t_X", "P_oX"],
+      "steps": [
+        {"id": "transition", "rule": "transition_homomorphism", "result": ["t_X", "P_f", "P_oY"]},
+        {"id": "functor", "rule": "probability_functoriality", "result": ["t_X", "P_(oY_after_f)"]},
+        {"id": "observation", "rule": "observation_homomorphism", "result": ["t_X", "P_oX"]}
+      ]
+    },
+    {
+      "id": "proposition_4_2_forward",
+      "kind": "logic",
+      "start": "model_irrelevance",
+      "goal": "f_is_F_Moore_homomorphism",
+      "steps": [
+        {"id": "unfold", "rule": "unfold_model_irrelevance", "result": "ker(f) <= ker(pair(P_f_after_tS,oS))"},
+        {"id": "factor", "rule": "kernel_factorization_forward", "result": "exists tZ. pair(P_f_after_tS,oS) = tZ_after_f"},
+        {"id": "hom", "rule": "homomorphism_definition_forward", "result": "f_is_F_Moore_homomorphism"}
+      ]
+    },
+    {
+      "id": "proposition_4_2_backward",
+      "kind": "logic",
+      "start": "f_is_F_Moore_homomorphism",
+      "goal": "model_irrelevance",
+      "steps": [
+        {"id": "unfold_hom", "rule": "homomorphism_definition_backward", "result": "exists tZ. pair(P_f_after_tS,oS) = tZ_after_f"},
+        {"id": "kernel", "rule": "kernel_factorization_backward", "result": "ker(f) <= ker(pair(P_f_after_tS,oS))"},
+        {"id": "fold", "rule": "fold_model_irrelevance", "result": "model_irrelevance"}
+      ]
+    },
+    {
+      "id": "proposition_4_3_forward",
+      "kind": "logic",
+      "start": "r_postfixed",
+      "goal": "q_r_is_homomorphism",
+      "steps": [
+        {"id": "unfold", "rule": "unfold_postfixed_quotient", "result": "ker(q_r) <= ker(F_qr_after_tX)"},
+        {"id": "factor", "rule": "quotient_factorization_forward", "result": "exists tq. F_qr_after_tX = tq_after_qr"},
+        {"id": "hom", "rule": "quotient_homomorphism_forward", "result": "q_r_is_homomorphism"}
+      ]
+    },
+    {
+      "id": "proposition_4_3_backward",
+      "kind": "logic",
+      "start": "q_r_is_homomorphism",
+      "goal": "r_postfixed",
+      "steps": [
+        {"id": "unfold_hom", "rule": "quotient_homomorphism_backward", "result": "exists tq. F_qr_after_tX = tq_after_qr"},
+        {"id": "kernel", "rule": "quotient_factorization_backward", "result": "ker(q_r) <= ker(F_qr_after_tX)"},
+        {"id": "fold", "rule": "fold_postfixed_quotient", "result": "r_postfixed"}
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,54 @@
+{
+  "claim": 3,
+  "independent_checker": {
+    "theorem_3_12_safe_verification": {
+      "closure_facts": 4,
+      "goal_derived": true
+    },
+    "theorem_3_13_safe_construction": {
+      "closure_facts": 4,
+      "goal_derived": true
+    }
+  },
+  "limitations": "The checker verifies the order-theoretic transfer step. The paper's separately stated lifting-compatibility lemmas remain premises.",
+  "negative_controls": {
+    "missing_surjectivity": {
+      "reason": "abstract_postfixed: operator is not order-reflecting",
+      "rejected": true
+    },
+    "reversed_compatibility": {
+      "reason": "closure_oplaxity: unlisted assumption",
+      "rejected": true
+    }
+  },
+  "proofs": {
+    "theorem_3_12_safe_verification": {
+      "goal": [
+        "h_Z",
+        [
+          "T_Z",
+          "h_Z"
+        ]
+      ],
+      "steps_checked": 4
+    },
+    "theorem_3_13_safe_construction": {
+      "goal": [
+        [
+          "push",
+          "h_S"
+        ],
+        [
+          "T_Z",
+          [
+            "push",
+            "h_S"
+          ]
+        ]
+      ],
+      "steps_checked": 4
+    }
+  },
+  "scope": "Universal abstract preorder proof schema under the paper's stated assumptions.",
+  "status": "VERIFIED"
+}
