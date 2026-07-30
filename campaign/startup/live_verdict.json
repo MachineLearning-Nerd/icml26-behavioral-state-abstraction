@@ -1,0 +1,16 @@
+{
+  "dataset": "ICML-2026-agent-repro/verdicts",
+  "dataset_revision": "74e66c780eb37697ff0b4e59643a62c77f3bfbe6",
+  "download_sha256": "360c81a9ecb598d8d548f0c228506189596f899e3b49ffe9368c7d1d464e3c98",
+  "filter": {
+    "field": "space_id",
+    "value": "DineshAI/kovefbSXbQ"
+  },
+  "matched_records": 1,
+  "space_revision": "5a8a6266162a652c6216487c4df8116b15c63aca",
+  "judged_at": "2026-07-30T14:54:55+00:00",
+  "score": "6/12",
+  "claim_verdicts": ["toy", "toy", "toy", "toy", "toy", "toy"],
+  "overall": "All six finite checks are valid but toy-scale evidence for universal or general mathematical statements."
+}
+

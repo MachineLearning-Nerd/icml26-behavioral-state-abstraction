@@ -10,6 +10,9 @@ from __future__ import annotations
 
 import itertools
 import json
+import os
+import platform
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -186,13 +189,25 @@ def c6_policy_dependent_naturality() -> dict:
 
 
 def main():
+    started = time.perf_counter()
     OUT.mkdir(parents=True, exist_ok=True)
     claims = {"claim_1_bundles": c1_bundles_and_closure(), "claim_2_closure_postfixed": c2_safe_pullback_verification(),
               "claim_3_safe_transfer": c3_safe_pushforward_construction(), "claim_4_logic_quantitative": c4_zero_predicate(),
               "claim_5_rl_abstraction": c5_rl_abstractions_and_bisimulation(), "claim_6_policy_naturality": c6_policy_dependent_naturality()}
     result = {"paper": "kovefbSXbQ", "arxiv": "2606.25357", "all_claims_passed": all(v["passed"] for v in claims.values()), "claims": claims,
-              "limitations": "Finite executions check the exact source constructions and failure hypotheses. The paper's universal categorical theorems remain justified by the linked public proofs, not by finite enumeration."}
+              "limitations": "Finite executions check the exact source constructions and failure hypotheses. The paper's universal categorical theorems remain justified by the linked public proofs, not by finite enumeration.",
+              "execution": {
+                  "backend": "local",
+                  "selected_flavor": "local",
+                  "estimated_required_cores": 1,
+                  "visible_logical_cpus": os.cpu_count(),
+                  "allocation_note": "Local backend is not hard-limited; this verifier is single-threaded.",
+                  "python": platform.python_version(),
+                  "determinism": "Exact enumeration; no random seed is used.",
+                  "runtime_seconds": round(time.perf_counter() - started, 6),
+              }}
     (OUT / "verdict.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
-    print(json.dumps({"all_claims_passed": result["all_claims_passed"], "claim_count": len(claims)}, indent=2))
+    print(json.dumps({"all_claims_passed": result["all_claims_passed"], "claim_count": len(claims),
+                      "execution": result["execution"]}, indent=2))
 
 if __name__ == "__main__": main()
