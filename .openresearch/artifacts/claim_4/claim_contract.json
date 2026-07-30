@@ -1,0 +1,14 @@
+{
+  "claim_id": 4,
+  "source_anchor": "Theorem 3.14, Appendix commutative lifting",
+  "source_sha256": "aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a",
+  "domain": "Arbitrary X, arity n, quantitative bundle h_X, and paired liftings constructed from the paper's combinator, aggregator, and barycenter operators.",
+  "assumptions": [
+    "z o combinator_quant = combinator_truth o (z x z)",
+    "z o aggregator_quant = aggregator_truth o z^A",
+    "z o barycenter_quant = barycenter_truth o P(z)"
+  ],
+  "quantified_conclusion": "For every h_X, z o lambda_X^quant(h_X) = lambda_X^truth(z o h_X).",
+  "acceptance": "A complete structural-induction certificate covers each lifting constructor; an independent normalizer agrees; removing any algebra law makes the proof fail."
+}
+

@@ -10,6 +10,7 @@ verdict = json.loads((root / "outputs" / "verdict.json").read_text())
 claims = verdict["claims"]
 claim_3 = json.loads((root / "outputs" / "proof_certificates.json").read_text())
 definitions = json.loads((root / "outputs" / "definition_certificates.json").read_text())
+claim_4 = json.loads((root / "outputs" / "logic_quant_certificate.json").read_text())
 assert verdict["paper"] == "kovefbSXbQ"
 assert len(claims) == 6 and verdict["all_claims_passed"]
 assert all(item.get("passed") and item.get("source") and item.get("mechanism")
@@ -21,6 +22,8 @@ assert all(item["rejected"] for item in claim_3["negative_controls"].values())
 assert all(definitions[f"claim_{claim}"]["status"] == "VERIFIED"
            for claim in (1, 2, 6))
 assert all(item["rejected"] for item in definitions["negative_controls"].values())
+assert claim_4["status"] == "VERIFIED"
+assert all(item["rejected"] for item in claim_4["negative_controls"].values())
 gate = {
     "paper": "kovefbSXbQ", "arxiv": "2606.25357", "claim_count": 6,
     "publication_eligible": False, "tests_passed": True,
@@ -30,7 +33,7 @@ gate = {
         "claim_1": "VERIFIED",
         "claim_2": "VERIFIED",
         "claim_3": "VERIFIED",
-        "claim_4": "TOY",
+        "claim_4": "VERIFIED",
         "claim_5": "TOY",
         "claim_6": "VERIFIED"
     },
@@ -39,12 +42,13 @@ gate = {
         "claim_3_symbolic_certificate_passes": True,
         "claim_1_claim_2_definition_schemas_pass": True,
         "claim_6_symbolic_naturality_passes": True,
+        "claim_4_structural_induction_passes": True,
         "independent_mechanism_per_claim": True,
         "negative_control_per_claim": True,
         "primary_source_audit_present": True,
         "theory_scope_limitation_explicit": True,
     },
-    "scope": "Symbolic certificates for Claims 1, 2, 3, and 6 plus cumulative historical finite checks.",
+    "scope": "Proof-grade certificates for Claims 1, 2, 3, 4, and 6 plus cumulative historical finite checks.",
 }
 (root / "outputs" / "publication_gate.json").write_text(json.dumps(gate, indent=2, sort_keys=True) + "\n")
 print(json.dumps(gate, indent=2, sort_keys=True))

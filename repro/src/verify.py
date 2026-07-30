@@ -16,6 +16,7 @@ import time
 from pathlib import Path
 
 from definition_certificates import run as run_definition_certificates
+from logic_quant_certificate import run as run_logic_quant_certificate
 from proof_certificates import run as run_proof_certificates
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -199,11 +200,13 @@ def main():
               "claim_5_rl_abstraction": c5_rl_abstractions_and_bisimulation(), "claim_6_policy_naturality": c6_policy_dependent_naturality()}
     proof_certificates = run_proof_certificates()
     definition_certificates = run_definition_certificates()
+    logic_quant_certificate = run_logic_quant_certificate()
     result = {"paper": "kovefbSXbQ", "arxiv": "2606.25357", "all_claims_passed": all(v["passed"] for v in claims.values()), "claims": claims,
               "current_verification": {
                   "claim_1": definition_certificates["claim_1"],
                   "claim_2": definition_certificates["claim_2"],
                   "claim_3": proof_certificates,
+                  "claim_4": logic_quant_certificate,
                   "claim_6": definition_certificates["claim_6"],
               },
               "limitations": "Finite executions check the exact source constructions and failure hypotheses. The paper's universal categorical theorems remain justified by the linked public proofs, not by finite enumeration.",
