@@ -3,6 +3,17 @@
 This page supersedes the historical finite-instance verifier at judged Space
 revision `5a8a6266162a652c6216487c4df8116b15c63aca`.
 
+## Current claim status
+
+| Claim | Current verifier | Status |
+|---|---|---|
+| 1 | Universal bundle/coalgebra type schema | VERIFIED |
+| 2 | Symbolic closure composition and post-fixed/fixed schema | VERIFIED |
+| 3 | Abstract preorder proof certificate | VERIFIED |
+| 4 | Historical finite enumeration only | TOY — not release-ready |
+| 5 | Historical 4-state MDP only | TOY — not release-ready |
+| 6 | Symbolic naturality normalization for arbitrary maps | VERIFIED |
+
 ## Claim 3 — safe verification and construction
 
 **Current status: VERIFIED.**
@@ -37,3 +48,19 @@ independent output, controls, and limitations are in
 The historical 4-state check remains preserved but is labeled
 **Historical rejected baseline** and is not the current verifier.
 
+## Claims 1–2 — exact definitions
+
+The verifier checks the universally parameterized type schemas
+`h_X : X^n -> V` and `t_X : X -> F X`, the exact composition
+`T_X = t_X* o lambda_X`, its pointwise expansion, and both alternatives in
+Definition 3.9. Controls with `X^(n+1)`, reversed composition, or a
+fixed-point-only substitution are rejected.
+
+## Claim 6 — policy naturality
+
+For an arbitrary map symbol `f : X -> Y`, both sides of the naturality
+equation normalize independently to
+`(P f (p(pi(o))), o)`. An incompatible abstract policy normalizes to a
+different term and is rejected. A separate direct evaluator exhausts 128
+two-state deterministic instances as a checker, not as the universal primary
+evidence.

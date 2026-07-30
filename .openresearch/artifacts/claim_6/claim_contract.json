@@ -1,0 +1,9 @@
+{
+  "claim_id": 6,
+  "source_anchor": "Example 2.9 and naturality Definition 2.8",
+  "source_sha256": "aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a",
+  "quantifiers": "For a fixed stationary policy pi : O -> A and every set map f : X -> Y.",
+  "contract": "alpha_Y^pi o F_Moore(f) = F_Markov(f) o alpha_X^pi",
+  "acceptance": "Both symbolic sides normalize to the same term; an incompatible-policy control does not."
+}
+
