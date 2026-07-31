@@ -2,8 +2,8 @@
   <rect width="1100" height="500" fill="#fbfbfe"/>
   <text x="50" y="52" fill="#111827" font-family="sans-serif" font-size="28" font-weight="700">Six claims, six exact contracts</text>
   <g font-family="sans-serif">
-    <rect x="50" y="90" width="310" height="100" rx="14" fill="#e0e7ff"/><text x="72" y="125" font-size="20" font-weight="700">C1 · Definition 3.1</text><text x="72" y="158" font-size="16">Arbitrary X, n, V type schema</text>
-    <rect x="395" y="90" width="310" height="100" rx="14" fill="#dbeafe"/><text x="417" y="125" font-size="20" font-weight="700">C2 · Definitions 3.8–3.9</text><text x="417" y="158" font-size="16">Closure and (post-)fixed schema</text>
+    <rect x="50" y="90" width="310" height="100" rx="14" fill="#e0e7ff"/><text x="72" y="125" font-size="20" font-weight="700">C1 · Definition 3.1</text><text x="72" y="158" font-size="16">Lean types + totality theorems</text>
+    <rect x="395" y="90" width="310" height="100" rx="14" fill="#dbeafe"/><text x="417" y="125" font-size="20" font-weight="700">C2 · Definitions 3.8–3.9</text><text x="417" y="158" font-size="16">Generic closure + post-fixed proof</text>
     <rect x="740" y="90" width="310" height="100" rx="14" fill="#cffafe"/><text x="762" y="125" font-size="20" font-weight="700">C3 · Theorems 3.12–3.13</text><text x="762" y="158" font-size="16">Abstract preorder derivations</text>
     <rect x="50" y="235" width="310" height="100" rx="14" fill="#dcfce7"/><text x="72" y="270" font-size="20" font-weight="700">C4 · Theorem 3.14</text><text x="72" y="303" font-size="16">Structural induction on liftings</text>
     <rect x="395" y="235" width="310" height="100" rx="14" fill="#fef3c7"/><text x="417" y="270" font-size="20" font-weight="700">C5 · Propositions 4.1–4.3</text><text x="417" y="303" font-size="16">Five arbitrary-symbol proof paths</text>

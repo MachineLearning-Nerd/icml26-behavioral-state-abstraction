@@ -1,5 +1,5 @@
 # Environment
 
-Python 3.12 is pinned by `.python-version`, `pyproject.toml`, and `uv.lock`.
-The verifier is deterministic, single-threaded, and uses no random seed.
-
+Lean 4.32.0 and Python 3.12 are pinned. Formal run
+`081c66c6-86a4-420f-ada5-354de4cb7e6c` used HF `cpu-upgrade`: estimated 2
+cores, 64 visible logical CPUs, one Lean worker, 29.088961 s. No GPU or seed.

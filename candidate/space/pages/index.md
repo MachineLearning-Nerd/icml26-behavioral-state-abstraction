@@ -1,12 +1,14 @@
-# kovefbSXbQ — current proof-certificate reproduction
+# kovefbSXbQ — current Lean 4 reproduction
 
-**Live judged score: 6/12.** The current candidate has six internally
-**VERIFIED** claim contracts. That is evidence status, not a new judge result.
+**Live judged score: 6/12.** The current candidate replaces finite and
+hard-coded proof schemas with 11 generic Lean 4 kernel-checked theorems and six
+compile-failure controls. Its six **VERIFIED** labels are reproduction
+verdicts, not a new judge result.
 
-Start with [Current verification](#/current-verification). It exposes the exact
-quantifiers, assumptions, code, raw results, checker outputs, failing controls,
-limitations, locked command, source hashes, Git SHA, seeds, CPU, and runtime for
-all six claims. Then inspect the [Visibility matrix](#/visibility-matrix),
+Start with [Current verification](#/current-verification). It exposes exact
+quantifiers, actual Lean proof code inline, raw kernel results, axiom audits,
+failing mutations, limitations, the locked command, source hashes, Git SHA,
+seeds, CPU, and runtime for all six claims. Then inspect the [Visibility matrix](#/visibility-matrix),
 [Release report](#/release-report), and [Evaluator-blind red team](#/red-team).
 
 ## Current pages

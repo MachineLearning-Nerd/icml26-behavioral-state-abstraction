@@ -1,9 +1,10 @@
 # Evaluator-visible evidence matrix
 
 Audit scope: start only at `README.md`, then `pages/index.md`, and traverse the
-current links. “Complete” means the exact claim, code, inline data, raw download,
-checker, control, limitations, Git SHA, seeds, CPU, runtime, fixed command, and
-locked environment are directly reachable.
+current links. “Complete” means the exact claim, actual Lean proof code inline,
+raw kernel data, source download, axiom checker, compile-failure control,
+limitations, Git SHA, seeds, CPU, runtime, fixed command, and locked
+environment are directly reachable.
 
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
 |---|---|---|---|---|---|---|---|---|

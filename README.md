@@ -1,22 +1,22 @@
-# Proof-grade reproduction: all six behavioral-semantics claims
+# Lean 4 reproduction: all six behavioral-semantics claims
 
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/blob/main/notebooks/behavioral_semantics_reproduction.py)
 
 We tested all six claims selected from *Compositional Behavioral Semantics for
 State Abstraction in Reinforcement Learning* ([arXiv:2606.25357](https://arxiv.org/abs/2606.25357)).
 The paper states universal definitions, theorems, and propositions rather than
-headline scalar results. We therefore replaced the previously judged 3–4-state
-examples with independently checked symbolic proof certificates over arbitrary
-maps, bundles, relations, and lifting expressions.
+headline scalar results. We replaced the previously judged 3–4-state examples
+with 11 generic Lean 4 kernel-checked theorems over arbitrary maps, bundles,
+relations, lifting expressions, probability functors, and quotients.
 
 **Assessment:** all six exact claim contracts are internally **VERIFIED**.
-This is a forecast, not a new judge result: the live score remains **6/12** until
-the evaluator reviews the published revision. The observed result is six
-certificate checks passing, 14 hypothesis-removal controls rejecting, and
-4,708 independent finite checker cases agreeing. The main proof certificates
-are not downscaled; the retained finite enumerations are explicitly secondary
-checks. Everything ran single-threaded on local CPU with no GPU and no
-stochastic seeds.
+This is a forecast, not a new judge result: the live score remains **6/12**
+until the evaluator reviews the published revision. The observed result is 11
+kernel-checked theorems, zero project-declared axioms or proof shortcuts, and
+six proof-breaking mutations rejected. Retained finite enumerations are
+secondary regression checks. The formal run used HF `cpu-upgrade` (64 visible
+logical CPUs, one Lean worker, 29.088961 seconds), no GPU, and no stochastic
+seed.
 
 Read the [illustrated report](reports/claim-by-claim/report.md), inspect the
 [tutorial notebook](notebooks/behavioral_semantics_reproduction.py), or run:
@@ -36,6 +36,8 @@ uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/p
 | [`c4-structural-zero-predicate-certificate`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c4-structural-zero-predicate-certificate) | Theorem 3.14 structural induction | `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py` | Claim 4 VERIFIED; 676-tree checker agrees | local CPU, 1 core estimate, ~5 s |
 | [`c5-rl-proposition-proof-certificates`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c5-rl-proposition-proof-certificates) | Propositions 4.1–4.3 symbolic proof paths | `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py` | Claim 5 VERIFIED; 3,904 checker cases agree | local CPU, 1 core estimate, ~5 s |
 | [`evaluator-visible-release-candidate-and-gates`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/evaluator-visible-release-candidate-and-gates) | Candidate Space, visibility matrix, red team, report, and cumulative gate | `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py` | Release candidate; publication depends on all fail-closed gates | local CPU, 1 core estimate, expected <10 s |
+| [`lean-4-kernel-proofs-for-all-six-claims`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/lean-4-kernel-proofs-for-all-six-claims) | Lean formalization, kernel/axiom audit, and six destructive mutations | `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py` | 11 theorems build; six mutations reject; cumulative gate passes | HF cpu-upgrade, 2-core estimate, 64 visible CPUs, one Lean worker, 29.088961 s |
+| [`evaluator-visible-lean-proof-release`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/evaluator-visible-lean-proof-release) | Inline Lean source, raw kernel output, visibility/red-team audit, and immutable candidate manifest | `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py` | Current release candidate; live score remains 6/12 pending judge | HF cpu-upgrade planned for cumulative release gate |
 
 ## Upstream reproduction
 
@@ -47,5 +49,5 @@ Learning* (arXiv `2606.25357`).
 
 The historical verifier executed six source-anchored finite-set constructions.
 Those checks are preserved for regression but are superseded by the current
-proof certificates. Primary-source anchors are in
+Lean 4 formalization. Primary-source anchors are in
 [`docs/SOURCE_AUDIT.md`](docs/SOURCE_AUDIT.md).

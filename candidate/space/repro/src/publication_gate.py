@@ -14,6 +14,7 @@ claim_3 = json.loads((root / "outputs" / "proof_certificates.json").read_text())
 definitions = json.loads((root / "outputs" / "definition_certificates.json").read_text())
 claim_4 = json.loads((root / "outputs" / "logic_quant_certificate.json").read_text())
 claim_5 = json.loads((root / "outputs" / "rl_proposition_certificates.json").read_text())
+lean = json.loads((root / "outputs" / "lean_verification.json").read_text())
 assert verdict["paper"] == "kovefbSXbQ"
 assert len(claims) == 6 and verdict["all_claims_passed"]
 assert all(item.get("passed") and item.get("source") and item.get("mechanism")
@@ -29,6 +30,14 @@ assert claim_4["status"] == "VERIFIED"
 assert all(item["rejected"] for item in claim_4["negative_controls"].values())
 assert claim_5["status"] == "VERIFIED"
 assert all(item["rejected"] for item in claim_5["negative_controls"].values())
+assert lean["status"] == "VERIFIED"
+assert len(lean["theorems"]) == 11
+assert all(item["status"] == "VERIFIED" and item["kernel_checked"]
+           and item["mutation_rejected"] for item in lean["claims"].values())
+assert not lean["project_declared_axioms"]
+assert all(not paths for paths in
+           lean["source_audit"]["forbidden_constructs"].values())
+assert all(item["rejected"] for item in lean["negative_controls"].values())
 release_checks = check_release()
 gate = {
     "paper": "kovefbSXbQ", "arxiv": "2606.25357", "claim_count": 6,
@@ -45,18 +54,17 @@ gate = {
     },
     "checks": {
         "six_anchored_claims_pass": True,
-        "claim_3_symbolic_certificate_passes": True,
-        "claim_1_claim_2_definition_schemas_pass": True,
-        "claim_6_symbolic_naturality_passes": True,
-        "claim_4_structural_induction_passes": True,
-        "claim_5_rl_proposition_proofs_pass": True,
+        "lean_kernel_build_passes": True,
+        "eleven_generic_theorems_kernel_checked": True,
+        "no_sorry_admit_native_decide_or_project_axiom": True,
+        "six_destructive_compile_controls_rejected": True,
         "independent_mechanism_per_claim": True,
         "negative_control_per_claim": True,
         "primary_source_audit_present": True,
         "theory_scope_limitation_explicit": True,
         "evaluator_visible_release": release_checks,
     },
-    "scope": "Proof-grade certificates for all six claims plus cumulative historical finite checks.",
+    "scope": "Lean 4 kernel proofs for all six claims plus cumulative historical finite checks.",
 }
 (root / "outputs" / "publication_gate.json").write_text(json.dumps(gate, indent=2, sort_keys=True) + "\n")
 print(json.dumps(gate, indent=2, sort_keys=True))

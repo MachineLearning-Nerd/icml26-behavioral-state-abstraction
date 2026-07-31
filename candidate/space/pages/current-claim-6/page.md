@@ -1,22 +1,50 @@
 # Current Claim 6 — policy-dependent naturality
 
-**Status: VERIFIED.**
+**Status: VERIFIED. Confidence: HIGH.**
 
-For a fixed stationary policy `π:O→A` and every set map `f:X→Y`, Example 2.9
-requires `α_Y^π∘F_Moore f=F_Markov f∘α_X^π`. Independent symbolic evaluation
-normalizes both sides to `(P f(p(π(o))),o)`.
+Example 2.9's natural transformation is proved for a fixed stationary
+`π:O→A`, every set map `f:X→Y`, and an arbitrary probability functor:
 
-```json
-{"quantifier":"for every set map f : X -> Y","left_equals_right":true,"independent_cases":128,"status":"VERIFIED"}
+```lean
+def mooreMap
+    (probability : ProbabilityFunctor P)
+    (f : X → Y)
+    (system : (Action → P X) × Observation) :
+    (Action → P Y) × Observation :=
+  (fun action => probability.map f (system.1 action), system.2)
+
+def markovMap
+    (probability : ProbabilityFunctor P)
+    (f : X → Y)
+    (system : P X × Observation) :
+    P Y × Observation :=
+  (probability.map f system.1, system.2)
+
+def policyTransition
+    (policy : Observation → Action)
+    (system : (Action → P X) × Observation) :
+    P X × Observation :=
+  (system.1 (policy system.2), system.2)
+
+theorem claim6_policy_transition_natural
+    (probability : ProbabilityFunctor P)
+    (policy : Observation → Action)
+    (f : X → Y)
+    (system : (Action → P X) × Observation) :
+    policyTransition policy (mooreMap probability f system) =
+      markovMap probability f (policyTransition policy system) := by
+  rfl
 ```
 
-A direct checker exhausts 128 two-state deterministic instances as secondary
-evidence. Replacing the shared policy with an incompatible abstract policy
-changes the normal form and rejects.
+The proof is `rfl` because the paper's naturality square commutes by
+construction, for arbitrary types and maps—not because values were
+enumerated. The mutation uses different concrete and abstract policies; Lean
+reports that the sides are not definitionally equal and exits 1.
 
-[Code](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/verification/definition_certificates.py) ·
-[contract, raw data, checker, control, limitations](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/tree/main/evidence/claim_6) ·
-[command, seeds, CPU and runtime](#/current-verification).
+[Complete source](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/verification/Formalization/Policy.lean) ·
+[raw result](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/results/lean_verification.json) ·
+[mutation](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/verification/Formalization/Mutants/Claim6IncompatiblePolicy.lean) ·
+[contract and source audit](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/tree/main/evidence/claim_6).
 
-Limitation: this is a constructional naturality identity, not a benchmark-scale
-empirical result. The three-state square is [Historical rejected baseline](#/claim-6).
+Limitation: this is a naturality identity for the policy-closing construction,
+not an empirical policy-learning or return claim.

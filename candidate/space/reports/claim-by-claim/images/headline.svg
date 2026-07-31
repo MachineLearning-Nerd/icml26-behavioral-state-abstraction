@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420">
   <rect width="1000" height="420" fill="#0b1020"/>
   <text x="55" y="58" fill="#eef2ff" font-family="sans-serif" font-size="30" font-weight="700">Evidence status, not judge score</text>
-  <text x="55" y="95" fill="#9ca3af" font-family="sans-serif" font-size="18">Universal claims moved from finite examples to machine-checked proof certificates</text>
+  <text x="55" y="95" fill="#9ca3af" font-family="sans-serif" font-size="18">Universal claims moved from finite examples to Lean 4 kernel proofs</text>
   <rect x="55" y="140" width="380" height="190" rx="18" fill="#30284f"/>
   <text x="245" y="190" text-anchor="middle" fill="#c4b5fd" font-family="sans-serif" font-size="18">JUDGED BASELINE</text>
   <text x="245" y="260" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="72" font-weight="700">6 / 12</text>

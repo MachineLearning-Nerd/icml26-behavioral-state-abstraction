@@ -1,8 +1,6 @@
 # Method
 
-The verifier checks the symbolic composition, pointwise expansion, and both
-behavioral-structure alternatives. It rejects reversed composition and a
-fixed-point-only substitution.
-
-Command: `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py`
-
+Primary evidence is `verification/Formalization/Core.lean`. `lean_gate.py`
+builds it, audits dependencies and rejects
+`Claim2ReversedPostfixed.lean`. The formal command and environment are recorded
+on the canonical current-verification page.

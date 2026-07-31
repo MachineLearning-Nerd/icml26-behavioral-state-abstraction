@@ -11,7 +11,7 @@
     "reinforcement-learning",
     "state-abstraction"
   ],
-  "updated_at": "2026-07-30T19:00:00+05:30",
+  "updated_at": "2026-07-31T00:00:00+05:30",
   "root": {
     "slug": "index",
     "title": "kovefbSXbQ — Behavioral State Abstraction",
@@ -19,7 +19,7 @@
     "children": [
       {
         "slug": "current-verification",
-        "title": "Current verification",
+        "title": "Current verification — Lean 4 kernel proofs",
         "file": "pages/current-verification/page.md",
         "children": []
       },
@@ -157,6 +157,6 @@
       }
     ]
   },
-  "agent_view_tokens": 1731,
-  "revision": "proof-certificate-release-candidate"
+  "agent_view_tokens": 6200,
+  "revision": "lean4-kernel-proof-release-candidate"
 }

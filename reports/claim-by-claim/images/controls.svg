@@ -8,6 +8,6 @@
     <text x="70" y="266" fill="#d1d5db">C4</text><rect x="130" y="244" width="770" height="30" rx="8" fill="#059669"/><text x="145" y="265" fill="white">remove combinator · aggregator · barycenter law</text>
     <text x="70" y="318" fill="#d1d5db">C5</text><rect x="130" y="296" width="770" height="30" rx="8" fill="#d97706"/><text x="145" y="317" fill="white">remove observation · target extension · equivalence</text>
     <text x="70" y="370" fill="#d1d5db">C6</text><rect x="130" y="348" width="770" height="30" rx="8" fill="#dc2626"/><text x="145" y="369" fill="white">incompatible abstract policy</text>
-    <text x="130" y="425" fill="#6ee7b7" font-size="20" font-weight="700">14 / 14 malformed certificates rejected</text>
+    <text x="130" y="425" fill="#6ee7b7" font-size="20" font-weight="700">6 / 6 Lean mutations rejected; 14 historical controls retained</text>
   </g>
 </svg>

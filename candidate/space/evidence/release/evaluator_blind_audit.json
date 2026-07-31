@@ -1,0 +1,40 @@
+{
+  "actual_lean_code_inline": true,
+  "claims_located": 6,
+  "compile_failure_controls_located": true,
+  "entrypoints": [
+    "README.md",
+    "pages/index.md"
+  ],
+  "files_opened": [
+    "README.md",
+    "pages/index.md",
+    "pages/current-verification/page.md",
+    "pages/visibility-matrix/page.md",
+    "pages/release-report/page.md",
+    "pages/red-team/page.md",
+    "pages/current-claim-1/page.md",
+    "pages/current-claim-2/page.md",
+    "pages/current-claim-3/page.md",
+    "pages/current-claim-4/page.md",
+    "pages/current-claim-5/page.md",
+    "pages/current-claim-6/page.md",
+    "pages/overview/page.md",
+    "pages/claims/page.md",
+    "pages/evidence/page.md",
+    "pages/verification/page.md",
+    "pages/claim-1/page.md",
+    "pages/claim-2/page.md",
+    "pages/claim-3/page.md",
+    "pages/claim-4/page.md",
+    "pages/claim-5/page.md",
+    "pages/claim-6/page.md",
+    "pages/methods/page.md",
+    "pages/negative-controls/page.md",
+    "pages/conclusion/page.md"
+  ],
+  "limitations_located": true,
+  "missing": [],
+  "raw_links_located": true,
+  "verdict": "visibility complete; scientific verdict remains separate"
+}

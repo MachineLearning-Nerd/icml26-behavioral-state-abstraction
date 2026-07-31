@@ -56,7 +56,25 @@ def check_release() -> dict:
     assert all(sha256(SPACE / path) == manifest[path] for path in manifest)
     assert all((SPACE / path).is_file() for path in allowlist)
     if SOURCE_SPACE.is_dir():
-        assert set(judged).issubset(set(judged) | candidate_paths)
+        modified_historical_paths = {"README.md", "logbook.json", "pages/index.md"}
+        retained_remote_assets = set(judged) - candidate_paths - modified_historical_paths
+        assert retained_remote_assets == {
+            ".gitattributes",
+            "bucket-icon.svg",
+            "index.html",
+            "logbook.css",
+            "logbook.js",
+            "style.css",
+            "trackio-logo-light.png",
+            "trackio-logo.png",
+            "trackio-wordmark-dark.png",
+        }
+        assert all(
+            path in modified_historical_paths
+            or path in retained_remote_assets
+            or sha256(SPACE / path) == digest
+            for path, digest in judged.items()
+        )
     else:
         assert all((SPACE / path).is_file() for path in judged)
         modified_historical_paths = {"README.md", "logbook.json", "pages/index.md"}
@@ -66,8 +84,8 @@ def check_release() -> dict:
         )
     assert all(
         (SPACE / path).suffix
-        in {".md", ".json", ".py", ".toml", ".lock", ".svg", ".txt", ".sha256"}
-        or Path(path).name == "uv.lock"
+        in {".md", ".json", ".py", ".lean", ".toml", ".lock", ".svg", ".txt", ".sha256"}
+        or Path(path).name in {"uv.lock", "lean-toolchain"}
         for path in allowlist
     )
 
@@ -91,10 +109,36 @@ def check_release() -> dict:
     index = (SPACE / "pages" / "index.md").read_text()
     current = (SPACE / "pages" / "current-verification" / "page.md").read_text()
     matrix = (SPACE / "pages" / "visibility-matrix" / "page.md").read_text()
+    blind_audit = json.loads(
+        (SPACE / "evidence" / "release" / "evaluator_blind_audit.json").read_text()
+    )
+    assert blind_audit["claims_located"] == 6 and not blind_audit["missing"]
+    assert blind_audit["actual_lean_code_inline"]
     assert index.index("Current verification") < index.index("Historical rejected baseline")
     assert "6/12" in current and "no increase" not in current.lower()
-    assert "766eb2ccc6e0dfc7b33bd813f5deb2a95fd02e5c" in current
+    assert "78ef92c8ea1091c86ae87fde314eff6e34698a1e" in current
     assert "uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py" in current
+    assert "Lean 4.32.0 kernel build: PASS" in current
+    assert "Project-declared axioms: 0" in current
+    lean_result = json.loads((SPACE / "results" / "lean_verification.json").read_text())
+    assert lean_result["status"] == "VERIFIED"
+    assert len(lean_result["theorems"]) == 11
+    assert all(item["rejected"] for item in lean_result["negative_controls"].values())
+    assert lean_result["formal_hf_run"]["status"] == "VERIFIED"
+    assert lean_result["formal_hf_run"]["visible_logical_cpus"] == 64
+    assert all(
+        (SPACE / "verification" / path).is_file()
+        for path in (
+            "lean-toolchain",
+            "lakefile.toml",
+            "Formalization/Core.lean",
+            "Formalization/SafeTransfer.lean",
+            "Formalization/LogicQuant.lean",
+            "Formalization/RL.lean",
+            "Formalization/Policy.lean",
+            "Formalization/AxiomAudit.lean",
+        )
+    )
     for claim in range(1, 7):
         page = (SPACE / "pages" / f"current-claim-{claim}" / "page.md").read_text()
         evidence = SPACE / "evidence" / f"claim_{claim}"
@@ -112,6 +156,8 @@ def check_release() -> dict:
                 "limitations.md",
             )
         )
+        assert "```lean" in page and f"claim{claim}_" in page
+        assert (evidence / "lean_verification.json").is_file()
         assert all(
             value
             for value in json.loads(
@@ -151,8 +197,9 @@ def check_release() -> dict:
         "candidate_manifest_verified": True,
         "current_pages_first": True,
         "historical_file_paths_preserved": len(judged),
+        "historical_unchanged_pages_verified": len(judged) - 12,
         "logbook_valid": True,
-        "negative_controls_verified": 14,
+        "negative_controls_verified": 20,
         "report_images_verified": len(report_images),
         "secrets_scan_passed": True,
         "visibility_rows_complete": 6,

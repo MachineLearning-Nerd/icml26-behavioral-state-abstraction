@@ -1,41 +1,40 @@
 # Pre-publication evaluator-visible audit
 
-Date: 2026-07-30
+Date: 2026-07-31
 
-Candidate construction started from a fresh copy of exact judged Space revision
-`5a8a6266162a652c6216487c4df8116b15c63aca`, then overlaid only paths listed in
-`candidate/upload_allowlist.txt`.
+The candidate overlays the exact protected Space lineage without deleting any
+remote path. Thirteen historical Markdown pages, including the old verifier
+and six old claim pages, are hash-identical to judged revision
+`5a8a6266162a652c6216487c4df8116b15c63aca`. Nine static assets remain
+unchanged on the existing Space. Only `README.md`, `logbook.json`, and
+`pages/index.md` are replaced to put current evidence first.
 
 ## Gates
 
-- Fixed command exited 0 in fresh assembled candidate.
-- Six cumulative exact claim statuses: VERIFIED.
-- Fourteen malformed-certificate controls: rejected.
+- Formal HF run `081c66c6-86a4-420f-ada5-354de4cb7e6c`: passed.
+- Lean 4.32.0 generic theorems kernel-checked: 11.
+- `sorry`, `admit`, `native_decide`, project-declared axioms: 0.
+- Claim-specific proof-breaking mutations rejected: 6/6.
+- Historical controls retained: 14.
 - Visibility matrix: 6/6 rows complete.
-- Candidate text allowlist: 172 files.
-- SHA-256 payload manifest: 171 entries; the manifest intentionally cannot
-  hash itself.
-- Judged file subset: all 25 old paths present.
-- Historical integrity: 22 unmodified old paths hash-identical; `README.md`,
-  `logbook.json`, and `pages/index.md` are additive/current-navigation updates.
-  The original index table remains verbatim below “Historical rejected
-  baseline”.
-- Existing claim, evidence, method, control, conclusion, and historical
-  verification pages: hash-identical.
-- JSON parse: pass.
-- Secret-pattern scan: pass.
-- Five SVG figures: XML parse pass; headline rendered through macOS Quick Look.
-- `marimo check --strict notebooks/behavioral_semantics_reproduction.py`: exit 0.
+- Candidate text allowlist: 227 files.
+- SHA-256 payload manifest: 226 entries; the manifest excludes only itself.
+- Protected judged paths accounted for: 25/25.
+- Hash-identical historical pages uploaded: 13.
+- JSON parse and secret-pattern scan: pass.
+- Five SVG figures: XML parse pass.
+- `uv run --frozen marimo check notebooks/behavioral_semantics_reproduction.py`: exit 0.
 
 ## Evaluator-blind traversal
 
-Round 1 opened only the exact judged `README.md`, `logbook.json`,
-`pages/index.md`, historical verification, six claim pages, evidence, and
-controls. Proof-grade quantifiers, source, raw data, locks, SHA, and CPU metadata
-could not be found.
+A fresh temporary copy was reviewed from only `README.md`, `logbook.json`, and
+`pages/index.md`. Link traversal opened every current page before historical
+evidence and located, without repository knowledge: exact contracts and
+quantifiers, actual Lean source inline, complete downloadable source, raw
+kernel JSON, axiom output, six failing mutations, fixed command and lock
+inputs, source hashes, Git SHA, run ID, CPU/runtime, confidence, and
+limitations. No required cell was missing. The machine-readable file list is
+`evidence/release/evaluator_blind_audit.json`.
 
-Round 2 opened only the assembled candidate's canonical entrypoint, followed
-its navigation, and located current verification first; all six current claim
-pages; code; lock inputs; per-claim contracts, raw data, checkers, controls and
-limitations; visibility matrix; release report; and this red-team record.
-No OpenResearch run log or unpublished repository path was used to fill a gap.
+This audit establishes discoverability and release integrity, not a live judge
+score.

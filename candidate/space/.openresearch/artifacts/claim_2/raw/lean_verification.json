@@ -1,0 +1,183 @@
+{
+  "allowed_foundational_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "axiom_audit": {
+    "command": "lake env lean Formalization/AxiomAudit.lean",
+    "exit_code": 0,
+    "runtime_seconds": 7.658712,
+    "stderr": "",
+    "stdout": "'BehavioralSemantics.claim1_bundle_total' does not depend on any axioms\n'BehavioralSemantics.claim1_coalgebra_transition_total' does not depend on any axioms\n'BehavioralSemantics.claim2_closure_pointwise' does not depend on any axioms\n'BehavioralSemantics.claim2_fixed_is_postfixed' does not depend on any axioms\n'BehavioralSemantics.claim3_safe_verification' depends on axioms: [Classical.choice, Quot.sound]\n'BehavioralSemantics.claim3_safe_construction' does not depend on any axioms\n'BehavioralSemantics.claim4_zero_predicate_commutes' depends on axioms: [Quot.sound]\n'BehavioralSemantics.claim5_next_observation_prediction' depends on axioms: [Quot.sound]\n'BehavioralSemantics.claim5_model_irrelevance_iff_homomorphism' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'BehavioralSemantics.claim5_bisimulation_quotient_iff_postfixed' depends on axioms: [Quot.sound]\n'BehavioralSemantics.claim6_policy_transition_natural' does not depend on any axioms\n"
+  },
+  "build": {
+    "command": "lake build",
+    "exit_code": 0,
+    "runtime_seconds": 0.195987,
+    "stderr": "",
+    "stdout": "Build completed successfully (8 jobs).\n"
+  },
+  "claims": {
+    "claim_1": {
+      "kernel_checked": true,
+      "mutation_rejected": true,
+      "status": "VERIFIED"
+    },
+    "claim_2": {
+      "kernel_checked": true,
+      "mutation_rejected": true,
+      "status": "VERIFIED"
+    },
+    "claim_3": {
+      "kernel_checked": true,
+      "mutation_rejected": true,
+      "status": "VERIFIED"
+    },
+    "claim_4": {
+      "kernel_checked": true,
+      "mutation_rejected": true,
+      "status": "VERIFIED"
+    },
+    "claim_5": {
+      "kernel_checked": true,
+      "mutation_rejected": true,
+      "status": "VERIFIED"
+    },
+    "claim_6": {
+      "kernel_checked": true,
+      "mutation_rejected": true,
+      "status": "VERIFIED"
+    }
+  },
+  "execution": {
+    "estimated_required_cores": 2,
+    "lean_worker_threads": 1,
+    "requested_backend": "hf",
+    "runtime_seconds": 14.300909,
+    "selected_flavor": "cpu-upgrade",
+    "visible_logical_cpus": 8
+  },
+  "formal_hf_run": {
+    "run_id": "081c66c6-86a4-420f-ada5-354de4cb7e6c",
+    "commit": "78ef92c8ea1091c86ae87fde314eff6e34698a1e",
+    "selected_flavor": "cpu-upgrade",
+    "image": "ghcr.io/astral-sh/uv:python3.12-bookworm",
+    "estimated_required_cores": 2,
+    "visible_logical_cpus": 64,
+    "lean_worker_threads": 1,
+    "verifier_runtime_seconds": 29.088961,
+    "status": "VERIFIED"
+  },
+  "foundational_dependencies": {
+    "claim1_bundle_total": [],
+    "claim1_coalgebra_transition_total": [],
+    "claim2_closure_pointwise": [],
+    "claim2_fixed_is_postfixed": [],
+    "claim3_safe_construction": [],
+    "claim3_safe_verification": [
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "claim4_zero_predicate_commutes": [
+      "Quot.sound"
+    ],
+    "claim5_bisimulation_quotient_iff_postfixed": [
+      "Quot.sound"
+    ],
+    "claim5_model_irrelevance_iff_homomorphism": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "claim5_next_observation_prediction": [
+      "Quot.sound"
+    ],
+    "claim6_policy_transition_natural": []
+  },
+  "lean_version_output": "Lake version 5.0.0-src+8c9756b (Lean version 4.32.0)",
+  "limitations": "This mechanizes the paper's Set-level definitions and the exact generic implications for the six judged claims. It does not formalize every appendix lemma or the whole category-theory library.",
+  "negative_controls": {
+    "claim_1_wrong_arity": {
+      "exit_code": 1,
+      "expected_error": "expected to have type",
+      "file": "Formalization/Mutants/Claim1WrongArity.lean",
+      "output": "Formalization/Mutants/Claim1WrongArity.lean:11:31: error: Application type mismatch: The argument\n  unaryTuple\nhas type\n  Tuple Nat 1\nbut is expected to have type\n  Tuple Nat 2\nin the application\n  binaryBundle unaryTuple\n",
+      "rejected": true,
+      "runtime_seconds": 2.383312
+    },
+    "claim_2_reversed_postfixed": {
+      "exit_code": 1,
+      "expected_error": "expected to have type",
+      "file": "Formalization/Mutants/Claim2ReversedPostfixed.lean",
+      "output": "Formalization/Mutants/Claim2ReversedPostfixed.lean:13:2: error: Type mismatch\n  Nat.le_refl 1\nhas type\n  1 \u2264 1\nbut is expected to have type\n  alwaysOne tuple \u2264 collapseToZero alwaysOne tuple\n",
+      "rejected": true,
+      "runtime_seconds": 1.118699
+    },
+    "claim_3_missing_surjectivity": {
+      "exit_code": 1,
+      "expected_error": "nonempty empty",
+      "file": "Formalization/Mutants/Claim3MissingSurjectivity.lean",
+      "output": "Formalization/Mutants/Claim3MissingSurjectivity.lean:11:26: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  Nonempty Empty\n\nHint: Adding the command `deriving instance Nonempty for Empty` may allow Lean to derive the missing instance.\n",
+      "rejected": true,
+      "runtime_seconds": 0.742367
+    },
+    "claim_4_missing_homomorphism": {
+      "exit_code": 1,
+      "expected_error": "zerohomomorphism",
+      "file": "Formalization/Mutants/Claim4MissingHomomorphism.lean",
+      "output": "Formalization/Mutants/Claim4MissingHomomorphism.lean:19:2: error: Type mismatch\n  claim4_zero_predicate_commutes quantitative logical fun value => decide (value = 0)\nhas type\n  (ZeroHomomorphism quantitative logical fun value => decide (value = 0)) \u2192\n    \u2200 (expression : LiftingExpr Nat Unit),\n      decide (evalQuantitative quantitative expression = 0) =\n        evalLogical logical (fun value => decide (value = 0)) expression\nbut is expected to have type\n  \u2200 (expression : LiftingExpr Nat Unit),\n    decide (evalQuantitative quantitative expression = 0) =\n      evalLogical logical (fun value => decide (value = 0)) expression\n",
+      "rejected": true,
+      "runtime_seconds": 0.556388
+    },
+    "claim_5_missing_kernel_condition": {
+      "exit_code": 1,
+      "expected_error": "constantencoder left",
+      "file": "Formalization/Mutants/Claim5MissingKernelCondition.lean",
+      "output": "Formalization/Mutants/Claim5MissingKernelCondition.lean:11:2: error: Type mismatch\n  factors_through_of_kernel_inclusion constantEncoder id\nhas type\n  (\u2200 (left right : Bool), constantEncoder left = constantEncoder right \u2192 id left = id right) \u2192\n    \u2203 factor, \u2200 (state : Bool), factor (constantEncoder state) = id state\nbut is expected to have type\n  \u2203 factor, \u2200 (state : Bool), factor (constantEncoder state) = state\n",
+      "rejected": true,
+      "runtime_seconds": 0.534326
+    },
+    "claim_6_incompatible_policy": {
+      "exit_code": 1,
+      "expected_error": "not definitionally equal",
+      "file": "Formalization/Mutants/Claim6IncompatiblePolicy.lean",
+      "output": "Formalization/Mutants/Claim6IncompatiblePolicy.lean:19:2: error: Tactic `rfl` failed: The left-hand side\n  policyTransition (fun x => true) (mooreMap identityProbability id actionSystem)\nis not definitionally equal to the right-hand side\n  markovMap identityProbability id (policyTransition (fun x => false) actionSystem)\n\n\u22a2 policyTransition (fun x => true) (mooreMap identityProbability id actionSystem) =\n    markovMap identityProbability id (policyTransition (fun x => false) actionSystem)\n",
+      "rejected": true,
+      "runtime_seconds": 0.356221
+    }
+  },
+  "paper": "2606.25357",
+  "project_declared_axioms": [],
+  "source_audit": {
+    "files": {
+      "Formalization/AxiomAudit.lean": "0070312b1596ef0d944bee7b5f3e1f60f858e101f572bce1178a5f9f8fd868d6",
+      "Formalization/Core.lean": "9b5b8b6b42a909de25abdcd9c532caad0498c64fae1d807754e70ca128100f5c",
+      "Formalization/LogicQuant.lean": "abfa2b6ddfaad8c9934f05ac0f269f94d1229d4e67a666f6264a761919bc9990",
+      "Formalization/Policy.lean": "bffa06ffa5e3a4a59a97a3492d6d3a2945e9f6245f11a77cee11358b1c0d1220",
+      "Formalization/RL.lean": "dd848a7f7284edf91bbcabf7d3c14a97ac311383efd254e4f29fcdc9ae1e60b6",
+      "Formalization/SafeTransfer.lean": "29ff6030082356e7c3f9c0471df3ab9f27a33cc521dcdc4ebd6c0ed027ed2a32"
+    },
+    "forbidden_constructs": {
+      "admit": [],
+      "native_decide": [],
+      "project_axiom": [],
+      "sorry": []
+    }
+  },
+  "status": "VERIFIED",
+  "theorems": [
+    "claim1_bundle_total",
+    "claim1_coalgebra_transition_total",
+    "claim2_closure_pointwise",
+    "claim2_fixed_is_postfixed",
+    "claim3_safe_verification",
+    "claim3_safe_construction",
+    "claim4_zero_predicate_commutes",
+    "claim5_next_observation_prediction",
+    "claim5_model_irrelevance_iff_homomorphism",
+    "claim5_bisimulation_quotient_iff_postfixed",
+    "claim6_policy_transition_natural"
+  ],
+  "toolchain": "leanprover/lean4:v4.32.0"
+}

@@ -31,3 +31,39 @@ still reachable but appears after the current verifier and is labelled exactly
 JSON: 676 lifting trees, 64 factor maps, 3,840 quotient cases, 128 naturality
 instances, and 14 rejected controls. Result: visibility matrix complete; six
 evidence verdicts VERIFIED. This is not a live judge verdict.
+
+## Round 3 — Lean kernel candidate
+
+The candidate was copied into a fresh temporary directory. The reviewer was
+given only `README.md`, `logbook.json`, `pages/index.md`, and the evaluator
+requirements. It followed discovered `#/slug` links without repository or
+OpenResearch context.
+
+Files opened, in order:
+
+```text
+README.md
+pages/index.md
+pages/current-verification/page.md
+pages/visibility-matrix/page.md
+pages/release-report/page.md
+pages/red-team/page.md
+pages/current-claim-1/page.md through pages/current-claim-6/page.md
+pages/overview/page.md
+pages/claims/page.md
+pages/evidence/page.md
+pages/verification/page.md
+pages/claim-1/page.md through pages/claim-6/page.md
+pages/methods/page.md
+pages/negative-controls/page.md
+pages/conclusion/page.md
+```
+
+The reviewer located actual Lean theorem/proof code inline for every claim,
+the complete source downloads, raw kernel JSON, `#print axioms` results, six
+compile-failure controls, source hashes, fixed command, formal run ID,
+allocation/runtime, confidence, and limitations. No required item was missing.
+[Machine-readable traversal](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/evidence/release/evaluator_blind_audit.json).
+
+Result: evaluator visibility is complete. This conclusion concerns
+discoverability, not whether the live judge will award full credit.

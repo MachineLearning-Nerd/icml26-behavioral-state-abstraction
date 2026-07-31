@@ -1,9 +1,6 @@
 # Method
 
-Separate normalization paths expand the Moore map then policy selection, and
-policy selection then the Markov map. Both reduce to
-`(P f (p(pi(o))), o)` for arbitrary symbols. A second direct evaluator checks
-128 deterministic finite cases; it is corroboration, not the universal proof.
-
-Command: `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py`
-
+Primary evidence is `verification/Formalization/Policy.lean`. The shared
+stationary policy is explicit and the theorem is universally quantified.
+`Claim6IncompatiblePolicy.lean` must exit nonzero. The 128 finite squares are
+retained only as secondary regression evidence.

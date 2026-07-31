@@ -22,38 +22,41 @@ curl -L -A 'OpenResearch-Reproduction/1.0 (contact: local-user)' https://export.
 ```
 
 Environment-variable names, never values, were inspected separately. The live
-verdict dataset was downloaded and filtered by exact
-`space_id == "DineshAI/kovefbSXbQ"`. The judged Space was checked out at exact
+verdict dataset was filtered by exact
+`space_id == "DineshAI/kovefbSXbQ"`. The judged Space was downloaded at exact
 revision `5a8a6266162a652c6216487c4df8116b15c63aca`.
 
 ## Fixed experiment command
 
-Every formal node used exactly:
+Every node inherited exactly:
 
 ```bash
 uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py
 ```
 
-Runs were launched only with:
+The Lean run used:
 
 ```bash
-orx exp run <experiment-id> --backend local
-orx exp wait <experiment-id> --timeout 480
-orx logs <run-id>
+orx exp run 7624ee40-f964-46f3-abbe-fd0d9c8cc8d7 --flavor cpu-upgrade --timeout 2h
+orx exp run 7624ee40-f964-46f3-abbe-fd0d9c8cc8d7 --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm --timeout 2h
+orx exp wait 7624ee40-f964-46f3-abbe-fd0d9c8cc8d7 --timeout 480
+orx logs 081c66c6-86a4-420f-ada5-354de4cb7e6c --bytes 50000
 ```
 
-Local was selected because each task was estimated at one core and well under
-five minutes. No GPU or Hugging Face CPU job was launched.
+The first launch failed before science because `uv` was absent; the second
+passed. Estimate: 2 cores. Actual: HF `cpu-upgrade`, 64 visible logical CPUs,
+one Lean worker, 29.088961-second verifier runtime. No GPU.
 
 ## Candidate checks
 
 ```bash
-marimo check --strict notebooks/behavioral_semantics_reproduction.py
-uv run --frozen python repro/src/release_gate.py
-uv run --frozen python repro/src/verify.py
-uv run --frozen python repro/src/publication_gate.py
+python3 repro/src/blind_audit.py
+python3 repro/src/build_release_manifest.py
+python3 repro/src/release_gate.py
+uv run --frozen marimo check notebooks/behavioral_semantics_reproduction.py
+python3 -m py_compile repro/src/lean_gate.py repro/src/build_release_manifest.py repro/src/release_gate.py repro/src/verify.py repro/src/publication_gate.py
+git diff --check
 ```
 
-The last two commands were repeated from a fresh candidate assembled over the
-exact judged Space. Upload and post-publication download commands are added to
-the final release report after execution.
+Upload and exact-revision post-publication commands are appended after the
+release action.

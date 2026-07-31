@@ -1,20 +1,58 @@
 # Current Claim 2 — closure and behavioral structures
 
-**Status: VERIFIED.**
+**Status: VERIFIED. Confidence: MEDIUM.**
 
-For arbitrary coalgebra `t_X:X→FX`, lifting `λ_X`, bundle `h_X:X^n→V`, and
-tuple in `X^n`, Definitions 3.8–3.9 require
-`T_X=t_X*∘λ_X`, its pointwise expansion, and either `h_X⪯T_X(h_X)` or equality.
-The typed normalizer accepts precisely this order. Reversed composition and a
-fixed-only replacement are rejected.
+Definitions 3.8–3.9 are encoded for arbitrary `F,X,n,V`, without enumerating
+states:
 
-```json
-{"closure":"t_X* o lambda_X","pointwise":"lambda_X(h_X)(t_X(x_1),...,t_X(x_n))","alternatives":2,"status":"VERIFIED"}
+```lean
+structure BundleLifting
+    (F : Type u → Type u) (n : Nat) (V : Type v) where
+  lift : {X : Type u} → Bundle X n V → Bundle (F X) n V
+
+def closure
+    (system : Coalgebra F X)
+    (lifting : BundleLifting F n V)
+    (h : Bundle X n V) : Bundle X n V :=
+  fun xs => lifting.lift h (fun i => system.transition (xs i))
+
+def PostFixed [LE V]
+    (operator : Bundle X n V → Bundle X n V)
+    (h : Bundle X n V) : Prop :=
+  ∀ xs, h xs ≤ operator h xs
+
+def Fixed
+    (operator : Bundle X n V → Bundle X n V)
+    (h : Bundle X n V) : Prop :=
+  h = operator h
+
+theorem claim2_closure_pointwise
+    (system : Coalgebra F X)
+    (lifting : BundleLifting F n V)
+    (h : Bundle X n V) (xs : Tuple X n) :
+    closure system lifting h xs =
+      lifting.lift h (fun i => system.transition (xs i)) :=
+  rfl
+
+theorem claim2_fixed_is_postfixed [LE V]
+    (operator : Bundle X n V → Bundle X n V)
+    (h : Bundle X n V)
+    (le_refl : ∀ value : V, value ≤ value)
+    (fixed : Fixed operator h) :
+    PostFixed operator h := by
+  intro xs
+  rw [congrFun fixed xs]
+  exact le_refl (operator h xs)
 ```
 
-[Code](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/verification/definition_certificates.py) ·
-[contract, raw data, checker, controls, limitations](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/tree/main/evidence/claim_2) ·
-[environment and runtime](#/current-verification).
+The reversed-post-fixed mutation asks Lean to prove `1≤0`; compilation exits 1
+with an expected-type mismatch. This prevents a vacuous “fixed point” pass.
 
-Limitation: these are exact definition schemas rather than empirical fixed-point
-iteration. The old three-state count remains [Historical rejected baseline](#/claim-2).
+[Complete source](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/verification/Formalization/Core.lean) ·
+[raw result](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/results/lean_verification.json) ·
+[mutation](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/blob/main/verification/Formalization/Mutants/Claim2ReversedPostfixed.lean) ·
+[contract and audit](https://huggingface.co/spaces/DineshAI/kovefbSXbQ/tree/main/evidence/claim_2).
+
+Limitation: the paper calls `T_X` a closure operator; this page verifies its
+stated construction and fixed/post-fixed characterization, not convergence of
+an iterative numerical algorithm.
