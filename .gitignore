@@ -1,4 +1,6 @@
 .venv/
+.lake/
+.lean/
 __pycache__/
 *.pyc
 .trackio/logbook/.sync_lock

@@ -1,0 +1,13 @@
+import Formalization
+
+#print axioms BehavioralSemantics.claim1_bundle_total
+#print axioms BehavioralSemantics.claim1_coalgebra_transition_total
+#print axioms BehavioralSemantics.claim2_closure_pointwise
+#print axioms BehavioralSemantics.claim2_fixed_is_postfixed
+#print axioms BehavioralSemantics.claim3_safe_verification
+#print axioms BehavioralSemantics.claim3_safe_construction
+#print axioms BehavioralSemantics.claim4_zero_predicate_commutes
+#print axioms BehavioralSemantics.claim5_next_observation_prediction
+#print axioms BehavioralSemantics.claim5_model_irrelevance_iff_homomorphism
+#print axioms BehavioralSemantics.claim5_bisimulation_quotient_iff_postfixed
+#print axioms BehavioralSemantics.claim6_policy_transition_natural

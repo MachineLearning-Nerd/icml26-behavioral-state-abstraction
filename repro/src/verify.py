@@ -16,6 +16,7 @@ import time
 from pathlib import Path
 
 from definition_certificates import run as run_definition_certificates
+from lean_gate import run as run_lean_gate
 from logic_quant_certificate import run as run_logic_quant_certificate
 from proof_certificates import run as run_proof_certificates
 from rl_proposition_certificates import run as run_rl_proposition_certificates
@@ -203,22 +204,25 @@ def main():
     definition_certificates = run_definition_certificates()
     logic_quant_certificate = run_logic_quant_certificate()
     rl_proposition_certificates = run_rl_proposition_certificates()
+    lean_verification = run_lean_gate()
     result = {"paper": "kovefbSXbQ", "arxiv": "2606.25357", "all_claims_passed": all(v["passed"] for v in claims.values()), "claims": claims,
               "current_verification": {
-                  "claim_1": definition_certificates["claim_1"],
-                  "claim_2": definition_certificates["claim_2"],
-                  "claim_3": proof_certificates,
-                  "claim_4": logic_quant_certificate,
-                  "claim_5": rl_proposition_certificates,
-                  "claim_6": definition_certificates["claim_6"],
+                  f"claim_{claim}": lean_verification["claims"][f"claim_{claim}"]
+                  for claim in range(1, 7)
               },
-              "limitations": "Finite executions check the exact source constructions and failure hypotheses. The paper's universal categorical theorems remain justified by the linked public proofs, not by finite enumeration.",
+              "historical_finite_checks": {
+                  "definitions": definition_certificates,
+                  "safe_transfer": proof_certificates,
+                  "logic_quantitative": logic_quant_certificate,
+                  "rl_propositions": rl_proposition_certificates,
+              },
+              "limitations": lean_verification["limitations"],
               "execution": {
-                  "backend": "local",
-                  "selected_flavor": "local",
-                  "estimated_required_cores": 1,
+                  "backend": "hf",
+                  "selected_flavor": "cpu-upgrade",
+                  "estimated_required_cores": 2,
                   "visible_logical_cpus": os.cpu_count(),
-                  "allocation_note": "Local backend is not hard-limited; this verifier is single-threaded.",
+                  "allocation_note": "Formal run uses Hugging Face cpu-upgrade; Lean worker threads are capped at one.",
                   "python": platform.python_version(),
                   "determinism": "Exact enumeration; no random seed is used.",
                   "runtime_seconds": round(time.perf_counter() - started, 6),
