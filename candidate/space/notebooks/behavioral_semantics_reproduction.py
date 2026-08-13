@@ -16,7 +16,7 @@ def _(mo):
     mo.md(r"""
     # From finite examples to Lean 4 kernel proofs
 
-    ![Headline evidence](https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/main/reports/claim-by-claim/images/headline.svg)
+    ![Headline evidence](https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/main/reports/claim-by-claim/images/headline.svg)
 
     This notebook explains the central reproduction result without rerunning
     any expensive experiment. The live judge score remains **6/12**. The
@@ -107,7 +107,7 @@ def _(mo):
     states. The best-supported possible score is **12/12 as a forecast**;
     only the live evaluator can change the current **6/12** score.
 
-    Full details: [illustrated report](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/blob/main/reports/claim-by-claim/report.md).
+    Full details: [illustrated report](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/blob/main/reports/claim-by-claim/report.md).
     """)
     return
 
