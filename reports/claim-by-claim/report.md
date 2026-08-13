@@ -1,22 +1,23 @@
-# From toy instances to proof certificates
+# From toy instances to Lean 4 kernel proofs
 
 ![The live 6/12 judge result remains unchanged; the current internal evidence has six VERIFIED claim contracts.](images/headline.svg)
 
 This reproduction asks a narrow question: can each selected universal claim in
 *Compositional Behavioral Semantics for State Abstraction in Reinforcement
 Learning* be checked without pretending that a tiny MDP proves a theorem? The
-answer is now yes for the six selected claims, subject to the explicit premises
-and limitations below. The live evaluator has not reviewed this revision, so
-6/12 remains the only judged score.
+answer is now yes for the six selected claims at the Set-level formalization
+scope, subject to the explicit premises and limitations below. The live
+evaluator has not reviewed this revision, so 6/12 remains the only judged score.
 
 ## What changed
 
 The judged Space exhaustively checked Boolean predicates on three or four
 states. Those examples were correct, but they could only corroborate universal
-statements. The current implementation instead represents arbitrary objects and
-maps as symbols, validates each source-anchored derivation step, independently
-normalizes or enumerates the resulting identity, and verifies that removing a
-required premise makes the certificate fail.
+statements. The current implementation defines arbitrary objects and maps in
+Lean 4, asks the Lean kernel to check 11 generic theorems, audits every theorem's
+logical dependencies, and verifies that six premise/type-breaking mutations
+fail compilation. The former symbolic and finite checks remain secondary
+regressions.
 
 ![The primary evidence route used for each claim.](images/proof-chain.svg)
 
@@ -26,20 +27,21 @@ The fixed cumulative command is:
 uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py
 ```
 
-It uses Python 3.12.11 from the repository `uv.lock`, standard-library-only
-verification code, no network, no randomness, and one local CPU core. Scientific
-verifier commit: `766eb2ccc6e0dfc7b33bd813f5deb2a95fd02e5c`.
+It uses Python 3.12 and Lean 4.32.0 from pinned repository inputs. Scientific
+formalization commit: `78ef92c8ea1091c86ae87fde314eff6e34698a1e`.
+The successful formal run was
+`081c66c6-86a4-420f-ada5-354de4cb7e6c`.
 
 ## Claim-by-claim evidence
 
 | Claim | Paper statement tested | Primary route | Independent route | Result |
 |---|---|---|---|---|
-| 1 | Definition 3.1: every `n`-ary bundle has type `X^n → V` for an `F`-coalgebra `t_X : X → FX` | Universally parameterized type-schema certificate | malformed `X^(n+1)` is rejected | VERIFIED |
-| 2 | Definitions 3.8–3.9: `T_X = t_X* ∘ λ_X`; behavioral structures are post-fixed or fixed | Typed composition and pointwise normalization | reversed composition and fixed-only substitution reject | VERIFIED |
-| 3 | Theorems 3.12–3.13: pullback reflects and pushforward preserves post-fixed points under the stated hypotheses | Two abstract preorder derivations | independent closure of four facts per theorem | VERIFIED |
-| 4 | Theorem 3.14: the zero predicate transfers logical to quantitative liftings under the algebra-homomorphism laws | Structural induction over the complete leaf/combinator/aggregator/barycenter grammar | 676 generated syntax trees normalize equally | VERIFIED |
-| 5 | Propositions 4.1–4.3: next-observation, model irrelevance, and bisimulation quotient characterizations | Five arbitrary-symbol derivations in `Set`/MDP semantics | 64 factorization maps and 3,840 quotient cases | VERIFIED |
-| 6 | Example 2.9: policy closure is natural for every set map `f : X → Y` | Both sides normalize to `P f (p(π(o))), o` | 128 direct deterministic instances | VERIFIED |
+| 1 | Definition 3.1: every `n`-ary bundle has type `X^n → V` for an `F`-coalgebra `t_X : X → FX` | Lean types and two generic totality theorems | wrong-arity Lean mutation fails | VERIFIED |
+| 2 | Definitions 3.8–3.9: `T_X = t_X* ∘ λ_X`; behavioral structures are post-fixed or fixed | Generic Lean closure and fixed-to-post-fixed theorem | reversed inequality mutation fails | VERIFIED |
+| 3 | Theorems 3.12–3.13: pullback reflects and pushforward preserves post-fixed points under the stated hypotheses | Three kernel-checked order-theoretic theorems | missing-surjectivity mutation fails | VERIFIED |
+| 4 | Theorem 3.14: zero transfers quantitative to logical liftings under all algebra-homomorphism laws | Lean structural induction over all four constructors | missing-homomorphism mutation fails | VERIFIED |
+| 5 | Propositions 4.1–4.3: next-observation, model irrelevance, and bisimulation quotient characterizations | Five generic theorems using an abstract probability functor and actual quotients | missing-kernel-condition mutation fails | VERIFIED |
+| 6 | Example 2.9: policy closure is natural for every set map `f : X → Y` | Lean definitional-equality proof for arbitrary `f` | incompatible-policy mutation fails | VERIFIED |
 
 The exact source audit records the ar5iv SHA-256
 `aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a`
@@ -49,16 +51,15 @@ and arXiv source SHA-256
 ## Why the checks are non-circular
 
 No proof uses a state count, tolerance, horizon, or sample budget chosen from
-the target identity. Claims 1–3, 5, and 6 use arbitrary symbols. Claim 4
-proceeds by constructor coverage. Finite enumeration is deliberately separate:
-it checks the implementation of the proof normalizers, not the universal
-quantifier.
+the target identity. Every theorem quantifies over arbitrary Lean types and
+maps; Claim 4 proceeds by structural induction. Finite enumeration is
+deliberately separate and cannot make a Lean theorem compile.
 
 ![Independent finite checks used as implementation diagnostics.](images/checkers.svg)
 
-The negative controls are premise-specific. They are not arbitrary bugs or
-nearby algorithms: each removes or changes a source requirement and must make
-the fail-closed checker exit nonzero.
+The negative controls are premise-specific compilable source files. Each
+removes or contradicts a paper requirement; `lean_gate.py` requires Lean to
+exit nonzero with the intended type/assumption error.
 
 ![All malformed certificates were rejected for their intended reason.](images/controls.svg)
 
@@ -73,30 +74,32 @@ outside that image; this convention is stated rather than hidden. Claim 6's
 direct 128-case enumeration is only a checker for the universal symbolic
 normalization.
 
-These are proof-certificate checks, not a formalization in Lean, Coq, or Agda.
-That residual checker-correctness risk is why the projected score is a forecast,
-not a guarantee.
+This mechanizes the six selected claims at the paper's Set-level presentation;
+it is not a formalization of the complete categorical development or every
+appendix lemma. That scope and evaluator interpretation are why the projected
+score is a forecast, not a guarantee.
 
 ## Compute and lineage
 
 ![The cumulative stacked lineage leading to the release candidate.](images/tree.svg)
 
-Every run estimated one CPU core and under five minutes, so it used the
-authorized local CPU path. Each completed in roughly five seconds of OpenResearch
-orchestration; the verifier body was under 0.01 seconds. No Hugging Face
-cpu-upgrade job was needed and compute cost was $0.
+The Lean build had uncertain setup time, so it ran on Hugging Face
+`cpu-upgrade`. Estimate: 2 cores. Actual allocation: 64 visible logical CPUs;
+Lean worker threads: 1. The verifier completed in 29.088961 seconds. No GPU was
+used. HF billing cost was not exposed in the run record.
 
 The important experiment branches are
-[`judged-finite-instance-baseline`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/judged-finite-instance-baseline),
-[`c3-symbolic-safe-transfer-certificate`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c3-symbolic-safe-transfer-certificate),
-[`c1-c2-c6-symbolic-definition-and-naturality-cert`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c1-c2-c6-symbolic-definition-and-naturality-cert),
-[`c4-structural-zero-predicate-certificate`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c4-structural-zero-predicate-certificate),
-and [`c5-rl-proposition-proof-certificates`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c5-rl-proposition-proof-certificates).
+[`audit/judged-finite-baseline`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/judged-finite-baseline),
+[`audit/c3-symbolic-safe-transfer`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c3-symbolic-safe-transfer),
+[`audit/c1-c2-c6-symbolic-definition-naturality`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c1-c2-c6-symbolic-definition-naturality),
+[`audit/c4-structural-zero-predicate`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c4-structural-zero-predicate),
+and [`audit/c5-rl-proposition-certificates`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c5-rl-proposition-certificates).
+The kernel-proof milestone is
+[`release/lean-kernel-six-claims`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/release/lean-kernel-six-claims).
 
 ## Assessment
 
 All six internal contracts are **VERIFIED** and the cumulative regression suite
-passes. A conservative projected score range is **8–12/12**; the
-best-supported possible score is **12/12**, strictly as a forecast. The existing
-6/12 live score remains authoritative until the judge evaluates the published
-Space revision.
+passes. The existing **6/12** live score remains authoritative; the Lean
+revision has not yet received a new judge result. Internal verification is not
+reported as an external score.
