@@ -1,16 +1,18 @@
-# STATUS — kovefbSXbQ
+# Status — ICML 2026 behavioral state abstraction
 
-**State: PUBLICATION QUEUED — six source-anchored claims verified locally.**
+**State: PUBLICATION QUEUED — six source-anchored claim contracts verified locally.**
 
-- Pinned primary source: arXiv `2606.25357` public TeX archive.
-- All six anchored claims map to Sections 2--4 and public appendices; there is
-  no unavailable data, model, or GPU requirement.
-- `python3 repro/src/verify.py` exhausts the finite construction tests and
-  writes `outputs/verdict.json`.
-- `python3 repro/src/publication_gate.py` is fail-closed: it requires all six
-  claims, a source/evidence bundle, and one negative control per claim.
-- Public GitHub evidence: `MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction`
-  at commit `bec2dc4`.
-- Atomically queued through `enqueue_backlog.py`; the shared HF drain is the
-  sole publisher.  It is currently waiting for the account Space-creation
-  quota, so no direct publish is attempted here.
+- Paper: [arXiv:2606.25357](https://arxiv.org/abs/2606.25357)
+- Authors: Yivan Zhang, Ziyan Luo, and Manuel Baltieri
+- Local result: 6/6 claim contracts `VERIFIED`
+- Formal result: 11 Lean kernel-checked theorems, 0 project axioms, 6/6 proof-breaking mutations rejected
+- Historical live evaluator result: **6/12**, all six claims classified as valid but toy-scale
+- Current Lean revision: not yet assigned a new live evaluator score
+- Fixed command: `uv run --frozen python repro/src/verify.py && uv run --frozen python repro/src/publication_gate.py`
+- Primary source audit: [`docs/SOURCE_AUDIT.md`](docs/SOURCE_AUDIT.md)
+- Branch mapping: [`branch-audit.md`](branch-audit.md)
+
+The current evidence is a Set-level Lean mechanization of the selected
+definitions and implications. It does not formalize every appendix lemma or
+the complete category-theory library. The 6/12 score remains the only external
+judge result until a fresh evaluation is recorded.
