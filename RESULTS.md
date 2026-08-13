@@ -1,28 +1,40 @@
 # Results
 
-Run the complete CPU verification with:
+Run the fixed cumulative verifier with:
 
 ```bash
-python3 repro/src/verify.py
-python3 repro/src/publication_gate.py
+uv sync --frozen
+uv run --frozen python repro/src/verify.py
+uv run --frozen python repro/src/publication_gate.py
 ```
 
-All six anchored construction claims pass.  The structured evidence is in
-[`outputs/verdict.json`](outputs/verdict.json).
+## Current local evidence
 
-| Claim | Executable construction audit | Necessary-hypothesis control |
-|---|---|---|
-| C1 — behavioral bundles and closure | Enumerates all Boolean predicates of a 3-state system and evaluates the pullback-of-lifting closure | Omitting current-state safety makes an unsafe state appear post-fixed |
-| C2 — post-fixed behavioral structure | Checks fixed versus post-fixed predicates under Definitions 3.8–3.9 | The same omitted-safety construction changes the result |
-| C3 — safe verification/construction | Exhaustively checks pullback reflection under a surjective homomorphism and pushforward preservation for every concrete post-fixed predicate | Non-surjectivity breaks reflection; a non-homomorphism breaks pushforward preservation |
-| C4 — logical/quantitative zero predicate | Exhausts nonnegative tuples for sum, max, and uniform expectation zero laws | Subtraction violates the required zero relation |
-| C5 — RL state abstraction and quotient | Checks observation preservation, transition pushforward, kernel/bisimulation, and policy closure on a finite stochastic Moore quotient | An observation mismatch breaks the homomorphism |
-| C6 — policy-dependent transition | Checks that state-distribution pushforward commutes with the policy-selected transition | An incompatible abstract action breaks the naturality square |
+Lean 4.32.0 checks 11 generic theorems spanning the six selected claims. The
+axiom audit finds no project-declared axioms and the six deliberate mutations
+fail compilation for their intended missing premise or type condition.
 
-## Scope
+| Claim | Primary formal evidence | Required failing control | Verdict |
+| --- | --- | --- | --- |
+| 1 | Generic bundle and coalgebra totality schemas | wrong tuple arity | VERIFIED |
+| 2 | Generic closure and fixed-to-post-fixed theorem | reversed post-fixed inequality | VERIFIED |
+| 3 | Surjective pullback reflection and homomorphic pushforward preservation | missing surjectivity / compatibility | VERIFIED |
+| 4 | Structural induction over all lifting-expression constructors | missing zero-homomorphism law | VERIFIED |
+| 5 | Next-observation, kernel-factorization, and quotient theorems | missing observation/kernel condition | VERIFIED |
+| 6 | Policy-dependent naturality by symbolic equality | incompatible policy | VERIFIED |
 
-This is a source-faithful theory reproduction.  Finite executions establish
-the exact constructions and exhibit why their hypotheses matter; they are not
-presented as a new proof of the paper’s universal categorical theorems.  The
-general quantifiers and categorical arguments remain anchored to the public
-primary-source TeX proofs listed in the source audit.
+The successful formal run used HF `cpu-upgrade`, an estimated two cores, 64
+visible logical CPUs, one Lean worker, and 29.088961 seconds. It used no GPU
+and no stochastic seed.
+
+## External evaluation and scope
+
+The previous live evaluator result is **6/12**. Its six verdicts were `toy`:
+the finite checks were valid but did not establish universal mathematical
+claims. The Lean release is stronger evidence but has not yet been rescored;
+do not report a projected score as an observed result.
+
+This repository mechanizes the selected Set-level statements and their stated
+assumptions. It is not a formalization of the complete paper or every appendix
+lemma. Claim 3 retains lifting-compatibility lemmas as premises, and Claim 5
+records the nonempty-MDP extension convention explicitly.

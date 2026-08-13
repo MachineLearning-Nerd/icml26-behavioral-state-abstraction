@@ -1,6 +1,14 @@
-# Historical rejected baseline
+# Release gate
 
-The former `FULL_GATE_READY` marker described only finite toy checks and is
-superseded by `candidate/pages/current-verification/page.md`. Publication is
-blocked until every exact claim contract has proof-grade evidence or an honest
-BLOCKED/FALSIFIED result and all evaluator-visible gates pass.
+The local publication gate passes for the selected six-claim evidence bundle:
+
+- all six source-anchored claim contracts are present and `VERIFIED`;
+- every claim has an independent mechanism and a negative control;
+- the Lean build checks 11 generic theorems;
+- the axiom audit reports no project-declared axioms;
+- all six proof-breaking mutations are rejected;
+- the theory-scope limitation and primary-source audit are explicit.
+
+This marker describes local reproducibility readiness. It does not replace the
+historical external score of 6/12 or imply that the current Lean revision has
+already been re-evaluated.
