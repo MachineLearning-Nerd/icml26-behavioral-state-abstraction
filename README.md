@@ -75,7 +75,6 @@ the complete mapping, claim routing, and branch-history notes are in
 | `audit/c3-symbolic-safe-transfer` | Theorems 3.12–3.13 order-theoretic transfer certificate. |
 | `audit/c4-structural-zero-predicate` | Theorem 3.14 structural zero-predicate induction. |
 | `audit/c5-rl-proposition-certificates` | Propositions 4.1–4.3 proof and quotient certificates. |
-| `audit/locked-baseline` | Locked finite baseline and startup evidence. |
 | `release/evaluator-visible-gates` | Candidate Space, visibility matrix, red-team checks, and cumulative release gate. |
 | `release/lean-kernel-six-claims` | Lean formalization, axiom audit, and all six destructive mutations. |
 | `release/evaluator-visible-lean-proof` | Final evaluator-facing Lean source, raw outputs, and immutable release manifest. |

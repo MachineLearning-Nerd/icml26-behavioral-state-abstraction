@@ -12,7 +12,6 @@ Branch history is provenance, not an additional claim-verification system.
 | `orx/c3-symbolic-safe-transfer-certificate` | `audit/c3-symbolic-safe-transfer` | C3 Theorems 3.12–3.13 order-theoretic proof route and premise controls. |
 | `orx/c4-structural-zero-predicate-certificate` | `audit/c4-structural-zero-predicate` | C4 Theorem 3.14 structural-induction certificate. |
 | `orx/c5-rl-proposition-proof-certificates` | `audit/c5-rl-proposition-certificates` | C5 Propositions 4.1–4.3, factorization, and quotient certificates. |
-| `orx/locked-validated-baseline` | `audit/locked-baseline` | Locked finite baseline and startup evidence. |
 | `orx/evaluator-visible-release-candidate-and-gates` | `release/evaluator-visible-gates` | Candidate Space, visibility matrix, red-team checks, and cumulative release gate. |
 | `orx/lean-4-kernel-proofs-for-all-six-claims` | `release/lean-kernel-six-claims` | Lean 4 formalization, kernel/axiom audit, and six proof-breaking mutations. |
 | `orx/evaluator-visible-lean-proof-release` | `release/evaluator-visible-lean-proof` | Final evaluator-facing Lean source, raw outputs, report, and immutable candidate manifest. |
