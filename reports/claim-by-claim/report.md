@@ -89,18 +89,17 @@ Lean worker threads: 1. The verifier completed in 29.088961 seconds. No GPU was
 used. HF billing cost was not exposed in the run record.
 
 The important experiment branches are
-[`judged-finite-instance-baseline`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/judged-finite-instance-baseline),
-[`c3-symbolic-safe-transfer-certificate`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c3-symbolic-safe-transfer-certificate),
-[`c1-c2-c6-symbolic-definition-and-naturality-cert`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c1-c2-c6-symbolic-definition-and-naturality-cert),
-[`c4-structural-zero-predicate-certificate`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c4-structural-zero-predicate-certificate),
-and [`c5-rl-proposition-proof-certificates`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/c5-rl-proposition-proof-certificates).
+[`audit/judged-finite-baseline`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/judged-finite-baseline),
+[`audit/c3-symbolic-safe-transfer`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c3-symbolic-safe-transfer),
+[`audit/c1-c2-c6-symbolic-definition-naturality`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c1-c2-c6-symbolic-definition-naturality),
+[`audit/c4-structural-zero-predicate`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c4-structural-zero-predicate),
+and [`audit/c5-rl-proposition-certificates`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/audit/c5-rl-proposition-certificates).
 The kernel-proof milestone is
-[`lean-4-kernel-proofs-for-all-six-claims`](https://github.com/MachineLearning-Nerd/icml26-repro-kovefbSXbQ-behavioral-state-abstraction/tree/orx/lean-4-kernel-proofs-for-all-six-claims).
+[`release/lean-kernel-six-claims`](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction/tree/release/lean-kernel-six-claims).
 
 ## Assessment
 
 All six internal contracts are **VERIFIED** and the cumulative regression suite
-passes. A conservative projected score range is **8–12/12**; the
-best-supported possible score is **12/12**, strictly as a forecast. The existing
-6/12 live score remains authoritative until the judge evaluates the published
-Space revision.
+passes. The existing **6/12** live score remains authoritative; the Lean
+revision has not yet received a new judge result. Internal verification is not
+reported as an external score.

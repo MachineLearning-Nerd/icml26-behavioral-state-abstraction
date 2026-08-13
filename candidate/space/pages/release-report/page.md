@@ -19,7 +19,7 @@ the judge's TOY evidence to Lean kernel-checked internal VERIFIED evidence. No
 claim is BLOCKED. Claims 1–2 retain material evaluator-interpretation risk.
 
 Scientific branch:
-`orx/lean-4-kernel-proofs-for-all-six-claims`, formalization SHA
+`release/lean-kernel-six-claims`, formalization SHA
 `78ef92c8ea1091c86ae87fde314eff6e34698a1e`. Successful formal run:
 `081c66c6-86a4-420f-ada5-354de4cb7e6c`. Exact inherited command:
 
