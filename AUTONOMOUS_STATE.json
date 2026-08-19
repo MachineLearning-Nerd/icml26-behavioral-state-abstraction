@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_source": "arXiv:2606.25357",
+  "openreview_id": "kovefbSXbQ",
+  "phase": "scoped_lean_audit_complete_waiting_for_live_evaluator",
+  "overall_status": "ALL_SIX_CLAIMS_VERIFIED_SCOPED_LEAN_KERNEL_11_THEOREMS_NO_PROJECT_AXIOMS_HISTORICAL_SCORE_6_OF_12_NO_CURRENT_SCORE",
+  "next_action": "retain the Lean proof and evidence manifests and wait for a fresh evaluator result; do not report a forecast as a score",
+  "current_score_claim": false,
+  "publication_allowed": false,
+  "official_author_endorsement": false,
+  "formal_release": {
+    "lean_version": "4.32.0",
+    "kernel_checked_theorems": 11,
+    "project_declared_axioms": 0,
+    "proof_breaking_mutations_rejected": 6,
+    "formalization_sha": "78ef92c8ea1091c86ae87fde314eff6e34698a1e"
+  },
+  "historical_live_judge": {
+    "points": 6,
+    "total": 12,
+    "quality": "medium",
+    "classification": "all six valid but toy-scale",
+    "current_score_claim": false
+  },
+  "candidate": {
+    "space_id": "DineshAI/kovefbSXbQ",
+    "baseline_head": "5a8a6266162a652c6216487c4df8116b15c63aca",
+    "latest_live_judged_head": "b6cc33294d21577e95c637a89816ccf307f1a144",
+    "publication_gate_passed": true
+  },
+  "source": {
+    "ar5iv_sha256": "aed1b2a2746d622e320cf34b8302381f0fa8edd0fbba0f8b4e937f67fba8987a",
+    "arxiv_tex_sha256": "49b5caabba01904db0c268d7528c3785bc20175791feefea22d4896c8ec5039a"
+  },
+  "repository_identity": {
+    "owner": "MachineLearning-Nerd",
+    "canonical_email": "MachineLearning-Nerd@users.noreply.github.com",
+    "recovery_bundle_sha256": "cd47e23fb7901042e7d6d8ddc3f320d8acc7287b5a23891f1168acb2b440ed96"
+  },
+  "github_repository": "https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction"
+}

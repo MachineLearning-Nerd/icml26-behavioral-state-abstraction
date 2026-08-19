@@ -1,0 +1,57 @@
+{
+  "schema_version": "1",
+  "paper": "Compositional Behavioral Semantics for State Abstraction in Reinforcement Learning",
+  "paper_source": "arXiv:2606.25357",
+  "openreview_id": "kovefbSXbQ",
+  "overall_status": "ALL_SIX_CLAIMS_VERIFIED_SCOPED_LEAN_KERNEL_11_THEOREMS_NO_PROJECT_AXIOMS_HISTORICAL_SCORE_6_OF_12_NO_CURRENT_SCORE",
+  "claims": [
+    {
+      "id": "C1",
+      "status": "VERIFIED_SCOPED_MEDIUM_CONFIDENCE",
+      "paper_anchor": "Definition 3.1 and Section 2 system definition",
+      "production_path": "Formalization/Core.lean; repro/src/definition_certificates.py; .openresearch/artifacts/claim_1/",
+      "negative_control": "Formalization/Mutants/Claim1WrongArity.lean rejects the wrong domain",
+      "scope": "generic bundle and coalgebra type schemas; finite enumeration is secondary"
+    },
+    {
+      "id": "C2",
+      "status": "VERIFIED_SCOPED_MEDIUM_CONFIDENCE",
+      "paper_anchor": "Definitions 3.8-3.9",
+      "production_path": "Formalization/Core.lean; repro/src/definition_certificates.py; .openresearch/artifacts/claim_2/",
+      "negative_control": "reversed composition and fixed-only substitutions are rejected",
+      "scope": "generic closure composition and fixed/post-fixed definitions"
+    },
+    {
+      "id": "C3",
+      "status": "VERIFIED_SCOPED_HIGH_CONFIDENCE",
+      "paper_anchor": "Theorems 3.12-3.13",
+      "production_path": "Formalization/SafeTransfer.lean; repro/src/proof_certificates.py; .openresearch/artifacts/claim_3/",
+      "negative_control": "missing surjectivity and reversed compatibility are rejected",
+      "scope": "universal abstract preorder proof schema under explicit paper premises"
+    },
+    {
+      "id": "C4",
+      "status": "VERIFIED_SCOPED_HIGH_CONFIDENCE",
+      "paper_anchor": "Theorem 3.14 and commutative lifting appendix",
+      "production_path": "Formalization/LogicQuant.lean; repro/src/logic_quant_certificate.py; .openresearch/artifacts/claim_4/",
+      "negative_control": "missing combinator, aggregator, or barycenter law is rejected",
+      "scope": "structural induction over the selected four-constructor lifting grammar"
+    },
+    {
+      "id": "C5",
+      "status": "VERIFIED_SCOPED_HIGH_CONFIDENCE",
+      "paper_anchor": "Propositions 4.1-4.3",
+      "production_path": "Formalization/RL.lean; repro/src/rl_proposition_certificates.py; .openresearch/artifacts/claim_5/",
+      "negative_control": "missing observation preservation, target extension, or equivalence is rejected",
+      "scope": "Set/MDP proposition proof paths with the nonempty-MDP extension explicit"
+    },
+    {
+      "id": "C6",
+      "status": "VERIFIED_SCOPED_HIGH_CONFIDENCE",
+      "paper_anchor": "Example 2.9 and naturality Definition 2.8",
+      "production_path": "Formalization/Policy.lean; repro/src/definition_certificates.py; .openresearch/artifacts/claim_6/",
+      "negative_control": "incompatible abstract policy produces a different naturality normal form",
+      "scope": "policy-selected naturality for every set map f : X -> Y"
+    }
+  ]
+}

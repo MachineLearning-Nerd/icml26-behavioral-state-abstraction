@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this reproduction or audit, please cite this repository and the original paper."
+type: software
+title: "Independent audit of Compositional Behavioral Semantics for State Abstraction in Reinforcement Learning"
+version: "1.0.0"
+date-released: 2026-08-19
+authors:
+  - name: MachineLearning-Nerd
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction"
+url: "https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction"
+abstract: "Lean-kernel and finite-check reproduction audit of Compositional Behavioral Semantics for State Abstraction in Reinforcement Learning."
+keywords:
+  - behavioral semantics
+  - state abstraction
+  - reinforcement learning
+  - Lean 4
+  - formal verification
+  - reproduction
+preferred-citation:
+  type: article
+  title: "Compositional Behavioral Semantics for State Abstraction in Reinforcement Learning"
+  authors:
+    - family-names: Zhang
+      given-names: Yivan
+    - family-names: Luo
+      given-names: Ziyan
+    - family-names: Baltieri
+      given-names: Manuel
+  year: 2026
+  url: "https://arxiv.org/abs/2606.25357"

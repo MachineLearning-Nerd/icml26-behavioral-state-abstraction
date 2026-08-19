@@ -9,10 +9,19 @@ Ziyan Luo, and Manuel Baltieri.
 - Repository: [MachineLearning-Nerd/icml26-behavioral-state-abstraction](https://github.com/MachineLearning-Nerd/icml26-behavioral-state-abstraction)
 - Formal candidate: [DineshAI/kovefbSXbQ](https://huggingface.co/spaces/DineshAI/kovefbSXbQ)
 
+## Audit record
+
+- Overall status: `ALL_SIX_CLAIMS_VERIFIED_SCOPED_LEAN_KERNEL_11_THEOREMS_NO_PROJECT_AXIOMS_HISTORICAL_SCORE_6_OF_12_NO_CURRENT_SCORE`
+- Scope: selected source-anchored definitions and implications formalized in Lean, with independent finite/checker evidence
+- Current score claim: none; the Lean revision has not received a fresh live score
+- Historical live score: `6/12`, toy-scale, retained as external context only
+- Publication gate: passed; author endorsement: not claimed
+- Standard audit surfaces: [CLAIM_EVIDENCE.md](CLAIM_EVIDENCE.md), [REPORT.md](REPORT.md), [STATUS.md](STATUS.md), [SOURCE_AUDIT.md](SOURCE_AUDIT.md), and [verify_final.py](verify_final.py)
+
 ## Current assessment
 
 The local cumulative release marks all six selected claim contracts
-**VERIFIED**. Lean 4.32.0 kernel checking covers 11 generic theorems, the
+**VERIFIED (SCOPED)**. Lean 4.32.0 kernel checking covers 11 generic theorems, the
 project declares no axioms, and six deliberately broken proof variants are
 rejected. The previous live evaluator result remains **6/12**: all six finite
 checks were judged valid but toy-scale. The Lean revision has not received a
@@ -60,13 +69,17 @@ and the control that should fail if a required premise is removed.
 The machine-readable summaries are `outputs/verdict.json`,
 `outputs/lean_verification.json`, and `outputs/publication_gate.json`. The
 primary-source anchors and fidelity boundary are collected in
-[`docs/SOURCE_AUDIT.md`](docs/SOURCE_AUDIT.md).
+[`docs/SOURCE_AUDIT.md`](docs/SOURCE_AUDIT.md). The normalized claim and
+publication records are [`claims.json`](claims.json),
+[`reproduction_verdicts.json`](reproduction_verdicts.json), and
+[`EVIDENCE_MANIFEST.json`](EVIDENCE_MANIFEST.json).
 
 ## Branch organization
 
 `main` is the publication surface. The historical work is grouped by intent;
 the complete mapping, claim routing, and branch-history notes are in
-[`branch-audit.md`](branch-audit.md).
+[`branch-audit.md`](branch-audit.md). There are nine clean branches including
+`main`, and all reachable commits are attributed to `MachineLearning-Nerd`.
 
 | Clean branch | Purpose |
 | --- | --- |

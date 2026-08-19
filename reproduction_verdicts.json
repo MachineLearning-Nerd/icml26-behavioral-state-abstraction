@@ -1,0 +1,38 @@
+{
+  "schema_version": "1",
+  "overall_status": "ALL_SIX_CLAIMS_VERIFIED_SCOPED_LEAN_KERNEL_11_THEOREMS_NO_PROJECT_AXIOMS_HISTORICAL_SCORE_6_OF_12_NO_CURRENT_SCORE",
+  "source_scope": "arXiv:2606.25357 / ICML submission kovefbSXbQ",
+  "cumulative_evidence": "PASS_LEAN_KERNEL_AND_FINITE_CHECKS_RELEASE_GATE",
+  "claims": {
+    "C1": "VERIFIED_SCOPED_MEDIUM_CONFIDENCE",
+    "C2": "VERIFIED_SCOPED_MEDIUM_CONFIDENCE",
+    "C3": "VERIFIED_SCOPED_HIGH_CONFIDENCE",
+    "C4": "VERIFIED_SCOPED_HIGH_CONFIDENCE",
+    "C5": "VERIFIED_SCOPED_HIGH_CONFIDENCE",
+    "C6": "VERIFIED_SCOPED_HIGH_CONFIDENCE"
+  },
+  "formal_release": {
+    "lean_version": "4.32.0",
+    "kernel_checked_theorems": 11,
+    "project_declared_axioms": 0,
+    "proof_breaking_mutations_rejected": 6,
+    "formalization_sha": "78ef92c8ea1091c86ae87fde314eff6e34698a1e"
+  },
+  "historical_live_score": {
+    "points": 6,
+    "total": 12,
+    "quality": "medium",
+    "classification": "all six valid but toy-scale",
+    "current_score_claim": false
+  },
+  "candidate": {
+    "space_id": "DineshAI/kovefbSXbQ",
+    "baseline_head": "5a8a6266162a652c6216487c4df8116b15c63aca",
+    "latest_live_judged_head": "b6cc33294d21577e95c637a89816ccf307f1a144",
+    "publication_gate_passed": true,
+    "awaiting_fresh_evaluator": true
+  },
+  "publication_allowed": false,
+  "official_author_endorsement": false,
+  "boundary": "The Lean layer formalizes selected Set-level definitions and implications, not every appendix lemma or the complete category-theory library; finite checks do not establish universal scope by themselves."
+}
